@@ -19,7 +19,7 @@ function App() {
    {/* <Login />  */}
    <Navbar />
    <Routes>
-    <Route path="/" exact element={<Admin />} />
+    <Route path="Veterinary/" exact element={<Admin />} />
     <Route path="/admin/products" exact element={<ProductList />} />
     <Route path="/contact" exact element={<Contact />} />
     <Route path="*" exact element={<NotFound />} />

@@ -16,7 +16,7 @@ function Navbar() {
             <div  className=' container pt-10   flex justify-between  pb-3'>
                 <div className='flex align-middle items-center text-start w-1/2 flex space-x-3 font-semibold  '>
                    <div className=' text-xl'>Veterinarian Store</div>
-                   <div><Link to="/">Home</Link></div>
+                   <div><Link to="Veterinary/">Home</Link></div>
                    <div><Link to="/contact">Contacts</Link></div>
 
                 </div>

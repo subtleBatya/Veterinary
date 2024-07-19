@@ -63,7 +63,7 @@ export default function ProductList() {
                                     <td>{product.brand}</td>
                                     <td>{product.category}</td>
                                     <td>{product.price}$</td>
-                                    <td><img src={"http://localhost:4000/products/images/" + product.imageFilename } 
+                                    <td><img src={"  http://localhost:4000/products" + product.imageFilename } 
                                         width="100" alt="..." /></td>
                                     <td>{product.createdAt.slice(0, 10)}</td>
                                     <td style={{width: "10px", whiteSpace: "nowrap" }}>

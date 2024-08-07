@@ -1,5 +1,5 @@
 import axios from 'axios';
-const BASE_URL = 'https://weterenariya.vercel.app/';
+const BASE_URL = 'http://212.111.80.94/';
 export default axios.create({
     baseURL: BASE_URL
 });

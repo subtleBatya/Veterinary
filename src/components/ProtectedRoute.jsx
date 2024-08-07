@@ -1,41 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../store/AuthSlice";
+import { refreshToken } from "../store/AuthSlice";
+import { Navigate } from 'react-router-dom';
 
-const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const isAdmin = useSelector((state) => state.auth.isAdmin);
-  const error = useSelector((state) => state.auth.error);
-  const dispatch = useDispatch();
+const ProtectedRoute = ({children}) => {
+  const dispatch = useDispatch;
+  const accessToken = useSelector((state) => state.auth.accessToken);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    dispatch(login({ username, password }));
-  };
+  useEffect(() => {
+    if (!accessToken) {
+      dispatch(refreshToken());
+    }
+  }, [accessToken, dispatch]);
 
-  return (
-    <div className=" flex flex-col  mx-auto w-1/3 gap-3">
-      <h1>{isAdmin ? 'Welcome Admin' : 'Please Log in'}</h1>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
-      {error && <p>{error}</p>}
-    </div>
-  );
-};
+  if(!accessToken) {
+    return <Navigate to="/" />
+  }
+  return children;
+}
 
-export default Login;
+export default ProtectedRoute;
 
 
 

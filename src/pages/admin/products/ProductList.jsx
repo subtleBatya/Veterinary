@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { logout } from "../../../store/AuthSlice";
 
 export default function ProductList() {
     const [products, setProducts] = useState([])
+    const dispatch = useDispatch(); 
+
+    const handleLogout = () => {
+        dispatch(logout());
+    };
 
     function getProducts(){
-        fetch ("http://localhost:4000/products?_sort=id&_order=desc")
+        fetch ("")
         .then(response => {
             if (response.ok) {
                 return response.json()
@@ -33,6 +40,7 @@ export default function ProductList() {
                     <Link className="btn btn-primary me-1" to="/admin/products/create">Create Product</Link>
                     <button type="button" className="btn btn-outline-primary"
                     onClick={getProducts}>Refresh</button>
+                    <button onClick={handleLogout}>Logout</button>
                 </div>
                 <div className="col">
 

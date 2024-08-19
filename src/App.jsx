@@ -1,5 +1,5 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { BrowserRouter as Router, Route, Routes, useLocation, Navigate, useNavigate } from 'react-router-dom';
 // import Login from './components/Login'
 // import Register from './components/Register'
 import Admin from './pages/Admin'
@@ -11,14 +11,19 @@ import Footer from './pages/Footer'
 import ProductList from './pages/admin/products/ProductList';
 import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
+import AdminHome from './pages/AdminHome'
 import { useSelector } from 'react-redux';
+import CategoryList from './pages/CategoryList';
 function App() {
-  
+  const Navigate = useNavigate();
     const isAdmin = useSelector(state=> state.auth.isAdmin);
     console.log(isAdmin);
     // const isAdmin = useSelector(state=> state.auth.isAdmin);
     // console.log(isAdmin);
-
+  // const useEffect = useEffect();
+  // useEffect () => {
+  //   {isAdmin ? <Navigate to="<ProductList />" />  : <Login /> } 
+  // }
   return (
     <>
     
@@ -26,11 +31,12 @@ function App() {
    {/* <Login />  */}
    
    <Navbar />
-   {isAdmin ? <ProductList /> : <Login /> }
+    {/* {isAdmin ? <AdminHome /> : <Login />} */}
    <Routes>
-    <Route path="Veterinary/" exact element={<Contact />} />
-    <Route path="/login" exact element={<Login />} />
-    <Route path="/admin/products" exact element={
+    <Route path="Veterinary/" exact element={<AdminHome />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/categories" element={<CategoryList />} />
+    <Route path="Veterinary/admin/products"  element={
     <ProtectedRoute>
       <ProductList />
     </ProtectedRoute>

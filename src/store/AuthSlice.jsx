@@ -1,17 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+// import axiosInstance from "../api/AxiosInstance";
 import axios from 'axios';
 import Cookies from "js-cookie";
+
+
 export const login = createAsyncThunk('auth/login',
   async ({ username, password }, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://212.111.80.94/login', {
-        username, password,
+      const response = await axios.post('http://212.111.80.94/login', { //Changes made here axios.post
+        username, password
       });
       console.log('Response Data:', response.data);
-      const { accessToken } = response.data;
-       console.log('Access Token:', accessToken)
-      axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-      return {accessToken};
+      const { token, isAdmin } = response.data;
+       console.log('Access Token:', token)
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      
+      Cookies.set('refreshToken', response.data.refreshToken, {expires: 7, httpOnly: true});
+
+      return {accessToken: token, isAdmin};
     } catch (error) {
       console.error('Error:', error)
       return rejectWithValue(error.response.data.message);
@@ -20,11 +26,11 @@ export const login = createAsyncThunk('auth/login',
     export const refreshToken = createAsyncThunk('auth/refreshToken', async(_, { rejectWithValue }) => {
       try {
         const response = await axios.post('http://212.111.80.94/refresh');
-        const {accessToken} = response.data;
-         console.log('Access Token:', accessToken);
-        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+        const {token} = response.data;
+         console.log('Access Token:', token);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         
-        return { accessToken};
+        return { accessToken: token};
         
       } catch (error) {
         return rejectWithValue(error.response.data.message);
@@ -57,44 +63,44 @@ export const login = createAsyncThunk('auth/login',
   
 
 
-const authSlice = createSlice({
-  name: 'auth',
-  initialState: {
-    isAdmin: false,
-    accessToken: null,
-    error: null,
-  },
-  reducers: {
-    logout: (state) => {
-      state.isAdmin = false;
-      state.accessToken = null;
-      state.error = null;
+        const authSlice = createSlice({
+          name: 'auth',
+          initialState: {
+            accessToken: null,
+            isAdmin: false,            
+            error: null,
+          },
+          reducers: {
+            logout: (state) => {
+              state.accessToken = null;
+              state.isAdmin = false;              
+              state.error = null;
 
-      Cookies.remove('refreshToken');
-      delete axios.defaults.headers.common['Authorization'];
-    },
-  },
-  extraReducers: (builder) => { //get to know
-    builder.addCase(login.fulfilled, (state, action) => {  //get to know about
-      state.isAdmin = true;
-      state.accessToken = action.payload.accessToken;
-      state.error = null;
-    })
-      .addCase(login.rejected, (state, action) => {
-        state.isAdmin = false;
-        state.accessToken = null;
-        state.error = action.payload;
-      })
-      .addCase(refreshToken.fulfilled, (state, action) => {
-        state.accessToken = action.payload.accessToken;
-        state.error = null;
-      })
-      .addCase(refreshToken.rejected, (state, action) => {
-        state.accessToken = null;
-        state.error = action.payload;
-      });
-  },
-});
+              Cookies.remove('refreshToken');
+              delete axios.defaults.headers.common['Authorization'];
+            },
+          },
+          extraReducers: (builder) => { //get to know
+            builder.addCase(login.fulfilled, (state, action) => {  //get to know about
+              state.accessToken = action.payload.accessToken;
+              state.isAdmin = true;
+              state.error = null;
+            })
+              .addCase(login.rejected, (state, action) => {
+                state.accessToken = null;
+                state.isAdmin = false;                
+                state.error = action.payload;
+              })
+              .addCase(refreshToken.fulfilled, (state, action) => {
+                state.accessToken = action.payload.accessToken;
+                state.error = null;
+              })
+              .addCase(refreshToken.rejected, (state, action) => {
+                state.accessToken = null;
+                state.error = action.payload;
+              });
+          },
+        });
 
 export const { logout } = authSlice.actions;
 export default authSlice.reducer;

@@ -19,7 +19,7 @@ export default function Example() {
         <div className="py-1">
           <MenuItem>
             <Link
-              to="/admin/products"
+              to="Veterinary/admin/products"
               className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
             >
               Products

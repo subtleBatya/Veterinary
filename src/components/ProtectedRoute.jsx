@@ -1,25 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshToken } from "../store/AuthSlice";
 import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ({children}) => {
-  const dispatch = useDispatch;
-  const accessToken = useSelector((state) => state.auth.accessToken);
-
+  const dispatch = useDispatch();
+  const {accessToken, isAdmin} = useSelector((state) => state.auth);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    if (!accessToken) {
-      dispatch(refreshToken());
-    }
+    const checkToken = async () => {
+      if (!accessToken) {
+        await dispatch(refreshToken());
+      } setLoading(false);
+    };
+    checkToken();
   }, [accessToken, dispatch]);
 
-  if(!accessToken) {
-    return <Navigate to="/" />
+  if(loading) {
+    return <div>Loading...</div>
+  }
+
+  if(!accessToken || !isAdmin) {
+    return <Navigate to="/login" />;
   }
   return children;
-}
+};
 
 export default ProtectedRoute;
+
+
+
+
+
+
+
+
+
 
 
 

@@ -9,7 +9,7 @@ function AdminHome() {
                         <Link to="/categories">Categories</Link>
                     </div>
                     <div className=" rounded-md w-1/3 aspect-video bg-blue-200">
-                    <Link to="admin/products">Product List</Link>
+                    <Link to="/admin/products">Product List</Link>
                     </div>
                     <div className=" rounded-md w-1/3 aspect-video bg-blue-200">
                         Categories

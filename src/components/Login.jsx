@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../store/AuthSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -8,10 +9,19 @@ const Login = () => {
   const isAdmin = useSelector((state) => state.auth.isAdmin);
   const error = useSelector((state) => state.auth.error);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    dispatch(login({ username, password }));
+    try {
+      const resultAction = await dispatch(login({ username, password }));
+      if (login.fulfilled.match(resultAction)) {
+        console.log('Login successful, navigating to /contact');
+        navigate('/admin/products');
+      }
+    } catch (error) {
+      console.error('Failed to log in:', error);
+    }
   };
   
   return (
@@ -30,6 +40,7 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
+      
       {error && <p>{error}</p>}
     </div>
   );

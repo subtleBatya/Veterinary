@@ -14,6 +14,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import AdminHome from './pages/AdminHome'
 import { useSelector } from 'react-redux';
 import CategoryList from './pages/CategoryList';
+import CreateProduct from './pages/admin/products/CreateProduct';
 function App() {
   const Navigate = useNavigate();
     const isAdmin = useSelector(state=> state.auth.isAdmin);
@@ -36,12 +37,13 @@ function App() {
     <Route path="Veterinary/" exact element={<AdminHome />} />
     <Route path="/login" element={<Login />} />
     <Route path="/categories" element={<CategoryList />} />
-    <Route path="Veterinary/admin/products"  element={
+    <Route path="/admin/products"  element={
     <ProtectedRoute>
       <ProductList />
     </ProtectedRoute>
     } />
     <Route path="/contact" exact element={<Contact />} />
+    <Route path="/admin/products/create" exact element={<CreateProduct />} />
     <Route path="*" exact element={<NotFound />} />
    </Routes>
       <Footer />

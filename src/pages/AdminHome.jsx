@@ -12,7 +12,7 @@ function AdminHome() {
                     <Link to="/admin/products">Product List</Link>
                     </div>
                     <div className=" rounded-md w-1/3 aspect-video bg-blue-200">
-                        Categories
+                        <Link to="/brands">Brands</Link>
                     </div>
             </div>
                         

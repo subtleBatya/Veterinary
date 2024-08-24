@@ -15,6 +15,8 @@ import AdminHome from './pages/AdminHome'
 import { useSelector } from 'react-redux';
 import CategoryList from './pages/CategoryList';
 import CreateProduct from './pages/admin/products/CreateProduct';
+import BrandList from './components/BrandList'
+import CreateBrand from './components/CreateBrand';
 function App() {
   const Navigate = useNavigate();
     const isAdmin = useSelector(state=> state.auth.isAdmin);
@@ -37,6 +39,7 @@ function App() {
     <Route path="Veterinary/" exact element={<AdminHome />} />
     <Route path="/login" element={<Login />} />
     <Route path="/categories" element={<CategoryList />} />
+    <Route path="/brands" element={<BrandList />} />
     <Route path="/admin/products"  element={
     <ProtectedRoute>
       <ProductList />
@@ -44,6 +47,7 @@ function App() {
     } />
     <Route path="/contact" exact element={<Contact />} />
     <Route path="/admin/products/create" exact element={<CreateProduct />} />
+    <Route path="/brands/create" exact element={<CreateBrand />} />
     <Route path="*" exact element={<NotFound />} />
    </Routes>
       <Footer />

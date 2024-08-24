@@ -31,7 +31,7 @@ const BrandList = () => {
     return (
         <>
         <div>
-            <h1>Brands</h1>
+            <h1>Brands are up to date, please fill them to get the newest ones!</h1>
             <ul>
                 {brands.map((brand) => (
                     <li key={brand._id}>{brand.name}</li>

@@ -15,7 +15,7 @@ export const getAllBrands = async () => {
 
 export const createBrand = async (brandData) => {
     try {
-        const response = await axios.post(`${API_URL}/brands`, brandData);
+        const response = await axios.post(`${API_URL}/secret/brand`, brandData);
         return response.data;
     } catch (error) {
         console.error('Error creating brand:', error);
@@ -25,7 +25,7 @@ export const createBrand = async (brandData) => {
 
 export const updateBrand = async (id, brandData) => {
     try {
-        const response = await axios.put(`${API_URL}/brands/${id}`, brandData);
+        const response = await axios.put(`${API_URL}/secret/brand/${id}`, brandData);
         return response.data;
     } catch (error) {
         console.error('Error updating brand:', error);
@@ -35,7 +35,7 @@ export const updateBrand = async (id, brandData) => {
 
 export const deleteBrand = async (id) => {
     try {
-        const response = await axios.delete(`${API_URL}/brands/${id}`);
+        const response = await axios.delete(`${API_URL}/secret/brand/${id}`);
         return response.data;
     } catch (error) {
         console.error('Error deleting brand:', error);

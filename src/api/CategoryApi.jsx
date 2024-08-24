@@ -13,7 +13,7 @@ export const getAllCategories = async () => {
 
 export const createCategory = async (categoryData) => {
     try {
-        const response = await axios.post(`${API_URL}/categories`, categoryData);
+        const response = await axios.post(`${API_URL}/secret/category`, categoryData);
         return response.data;
     } catch (error) {
         console.error('Error creating category:', error);
@@ -23,7 +23,7 @@ export const createCategory = async (categoryData) => {
 
 export const updateCategory = async (id, categoryData) => {
     try {
-        const response = await axios.put(`${API_URL}/categories/${id}`, categoryData);
+        const response = await axios.put(`${API_URL}/secret/category/${id}`, categoryData);
         return response.data;
     } catch (error) {
         console.error('Error updating category:', error);
@@ -33,7 +33,8 @@ export const updateCategory = async (id, categoryData) => {
 
 export const deleteCategory = async (id) => {
     try {
-        const response = await axios.delete(`${API_URL}/categories/${id}`, categoryData);
+        const response = await axios.delete(`${API_URL}/secret/category/${id}`); 
+        // categoryDate ayyrdym branda yok eken
         return response.data;
     } catch (error) {
         console.error('Error deleting category:', error);

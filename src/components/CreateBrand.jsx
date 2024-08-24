@@ -4,15 +4,15 @@ import { createBrand } from '../api/BrandApi';
 
 const CreateBrand = () => {
     const [name, setName] = useState('');
-    // const [image, setImage] = useState('');
+    const [image, setImage] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const newBrand = { name }; // su taydan image ayyrdym, yokardaky 
+            const newBrand = { name, image };
             await createBrand(newBrand);
             setName('');
-            // setImage('');
+            setImage('');
         } catch (error) {
             console.error('Error creating brand:', error);
         }
@@ -27,13 +27,13 @@ const CreateBrand = () => {
                 placeholder="Brand Name"
                 required
             />
-            {/* <input
+            <input
                 type="file"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
                 placeholder="Image URL"
                 required
-            /> */}
+            />
             <button type="submit">Create Brand</button>
         </form>
     );

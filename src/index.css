@@ -2,6 +2,13 @@
  @tailwind components;
  @tailwind utilities;
 
+ .container {
+   @apply mx-auto w-[10/14]
+ }
+
+ .blue {
+   @apply bg-blue-500
+ }
 
  /*
 

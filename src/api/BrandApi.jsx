@@ -1,7 +1,7 @@
 // src/api/brandApi.js
 import axios from 'axios';
 
-const API_URL = 'http://212.111.80.94'; // Replace with your backend URL
+export const API_URL = 'http://212.111.80.94'; // Replace with your backend URL
 
 export const getAllBrands = async () => {
     try {

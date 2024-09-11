@@ -1,42 +1,148 @@
-// src/components/CreateBrand.js
+// CreateBrand.jsx
 import React, { useState } from 'react';
-import { createBrand } from '../api/BrandApi';
+import axios from 'axios';
+import {API_URL} from '../api/BrandApi'
 
 const CreateBrand = () => {
-    const [name, setName] = useState('');
-    const [image, setImage] = useState('');
+  const [brandData, setBrandData] = useState({
+    name: '',
+    description: '',
+    image: null, // Add a field to store the image
+  });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const newBrand = { name, image };
-            await createBrand(newBrand);
-            setName('');
-            setImage('');
-        } catch (error) {
-            console.error('Error creating brand:', error);
-        }
-    };
+  const handleChange = (e) => {
+    setBrandData({
+      ...brandData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    return (
-        <form onSubmit={handleSubmit}>
+  const handleFileChange = (e) => {
+    setBrandData({
+      ...brandData,
+      image: e.target.files[0], // Store the selected image file
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('name', brandData.name);
+    formData.append('description', brandData.description);
+    if (brandData.image) {
+      formData.append('brand-photo', brandData.image); // Append the image to the form data. The 'brand-photo' here should match the input field's name element
+    }
+
+    try {
+      const response = await axios.post(`${API_URL}/secret/brand`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log('Brand created successfully:', response.data);
+    } catch (error) {
+      console.error('Error creating brand:', error.response?.data || error.message);
+    }
+  };
+
+  return (
+    <>
+    <div className='w-1/4'></div>
+    <div className='w-2/4 flex gap-2'>
+      
+    </div>
+    <form onSubmit={handleSubmit} encType='multipart/form-data' className='container' >
+      
+      <div className=' '>
+        <div className=' space-x-4 flex align-middle text-center' >
+          <div className=' text-xl'>Brand:</div>
             <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Brand Name"
-                required
+              className=' outline-blue-500/50 indent-2 text-black'
+              type="text"
+              name="name"
+              placeholder="Brand Name"
+              value={brandData.name}
+              onChange={handleChange}
+              required
             />
+        </div>
+        <div className='space-x-4 flex  align-middle text-center'>
+          <div className=' text-xl'>Description:</div>
+          <textarea
+            className=' outline-blue-500/50 indent-2'
+            name="description"
+            placeholder="Description"
+            value={brandData.description}
+            onChange={handleChange}
+            required
+          ></textarea>
+        </div>
+        <div className=' flex '>
+          <div className=' text-xl'>Choose Image: </div>
+          <div> 
             <input
-                type="file"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-                placeholder="Image URL"
-                required
+              className=' text-gray-400'
+              type="file"
+              name="brand-photo"
+              onChange={handleFileChange} // Handle image file selection
             />
-            <button type="submit">Create Brand</button>
-        </form>
-    );
+          </div>
+          
+        </div>
+        <div>
+          <button type="submit" className=' text-white rounded-md p-2 bg-blue-500'>Create Brand</button>
+        </div>
+      </div>
+        
+      
+    </form>
+    </>
+  );
 };
 
 export default CreateBrand;
+
+
+// // src/components/CreateBrand.js
+// import React, { useState } from 'react';
+// import { createBrand } from '../api/BrandApi';
+
+// const CreateBrand = () => {
+//     const [name, setName] = useState('');
+//     const [image, setImage] = useState('');
+
+//     const handleSubmit = async (e) => {
+//         e.preventDefault();
+//         try {
+//             const newBrand = { name };
+//             await createBrand(newBrand);
+//             setName('');
+//             setImage('');
+//         } catch (error) {
+//             console.error('Error creating brand:', error);
+//         }
+//     };
+
+//     return (
+//         <form onSubmit={handleSubmit}>
+//             <input
+//                 type="text"
+//                 value={name}
+//                 onChange={(e) => setName(e.target.value)}
+//                 placeholder="Brand Name"
+//                 required
+//             />
+//             <input
+//                 type="file"
+//                 value={image}
+//                 onChange={(e) => setImage(e.target.value)}
+//                 placeholder="Image URL"
+//                 required
+//             />
+//             <button type="submit">Create Brand</button>
+//         </form>
+//     );
+// };
+
+// export default CreateBrand;

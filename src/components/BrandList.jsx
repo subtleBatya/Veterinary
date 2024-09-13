@@ -29,7 +29,7 @@ const BrandList = () => {
             <h2>{brand.name}</h2>
             <p>{brand.description}</p>
             {brand.image && (
-              <img src={`${API_URL}/brands/${brand.image}`} alt={brand.name} />
+              <img src={`${API_URL}/uploads/1 10.png`} alt={brand.name} />
             )}
           </li>
         ))}

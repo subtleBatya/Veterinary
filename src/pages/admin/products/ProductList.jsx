@@ -52,6 +52,7 @@ export default function ProductList() {
                     <tr>
                         
                         <th>Name</th>
+                        <th>ID</th>
                         <th>Brand</th>
                         <th>Category</th>
                         <th>Price</th>
@@ -66,6 +67,7 @@ export default function ProductList() {
                             return (
                                 <tr key={index}>
                                     <td>{product.name}</td>
+                                    <td>{product._id}</td>
                                     <td>{product.brand}</td>
                                     <td>{product.category}</td>
                                     <td>{product.price}</td>
@@ -74,7 +76,7 @@ export default function ProductList() {
                                         width="100" alt="..." /></td>
                                     <td>{product.createdAt}</td>
                                     <td style={{width: "10px", whiteSpace: "nowrap" }}>
-                                        <Link className="btn btn-primary btn-sm me-1" to={"/admin/products/edit/" + product.id}>Edit</Link>
+                                        <Link className="btn btn-primary btn-sm me-1" to={"/admin/products/edit/" + product._id}>Edit</Link>
                                         <button type="button" className="btn btn-danger btn-sm">Delete</button>
                                     </td>
                                 </tr>

@@ -6,8 +6,12 @@
    @apply mx-auto w-[10/14]
  }
 
- .blue {
+ .bgBlue {
    @apply bg-blue-500
+ }
+
+ .blue {
+   @apply outline-blue-500
  }
 
  /*

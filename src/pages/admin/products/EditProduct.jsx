@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 
-const CreateProduct = () => {
+const EditProduct = () => {
 
   const navigate = useNavigate()
 
@@ -43,7 +43,7 @@ const CreateProduct = () => {
     }
 
     try {
-      const response = await axios.post('http://212.111.80.94/products', formData, {
+      const response = await axios.patch('http://212.111.80.94/products', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -160,7 +160,7 @@ const CreateProduct = () => {
     );
 };
 
-export default CreateProduct;
+export default EditProduct;
 
 
 

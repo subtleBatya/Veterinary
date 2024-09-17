@@ -27,10 +27,15 @@ const BrandList = () => {
         {brands.map((brand) => (
           <li key={brand._id}>
             <h2>{brand.name}</h2>
-            <p>{brand.description}</p>
             {brand.image && (
-              <img src={`${API_URL}/uploads/1 10.png`} alt={brand.name} />
+            <div className=' w-16'>
+              <img src={`${API_URL}` + `${brand.image}`   } alt="" />
+            </div>
             )}
+
+            {/* {brand.image && (
+              <img src={`${API_URL}/${brand.image}/uploads/`} alt={brand.name} />
+            )} */}
           </li>
         ))}
       </ul>

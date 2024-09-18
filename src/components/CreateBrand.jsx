@@ -48,55 +48,54 @@ const CreateBrand = () => {
 
   return (
     <>
-    <div className='w-1/4'></div>
-    <div className='w-2/4 flex gap-2'>
-      
-    </div>
-    <form onSubmit={handleSubmit} encType='multipart/form-data' className='container' >
-      
-      <div className=' '>
-        <div className=' space-x-4 flex align-middle text-center' >
-          <div className=' text-xl'>Brand:</div>
-            <input
-              className=' outline-blue-500/50 indent-2 text-black'
-              type="text"
-              name="name"
-              placeholder="Brand Name"
-              value={brandData.name}
+    <div className=' '>
+      <form onSubmit={handleSubmit} encType='multipart/form-data' className=' mt-12 create_container border-blue-500/50 border-3 rounded' >
+        
+        <div className=' m-4 space-y-4'>
+          <div className=' space-x-4 flex align-middle text-center' >
+            <div className=' text-xl'>Brand:</div>
+              <input
+                className=' outline-blue-500/50 indent-2 text-black w-full'
+                type="text"
+                name="name"
+                placeholder="Brand Name"
+                value={brandData.name}
+                onChange={handleChange}
+                required
+              />
+          </div>
+          <div className='space-x-4 flex  align-middle text-center'>
+            <div className=' text-xl'>Description:</div>
+            <textarea
+              className=' outline-blue-500/50 indent-2 w-full'
+              name="description"
+              placeholder="Description"
+              value={brandData.description}
               onChange={handleChange}
               required
-            />
-        </div>
-        <div className='space-x-4 flex  align-middle text-center'>
-          <div className=' text-xl'>Description:</div>
-          <textarea
-            className=' outline-blue-500/50 indent-2'
-            name="description"
-            placeholder="Description"
-            value={brandData.description}
-            onChange={handleChange}
-            required
-          ></textarea>
-        </div>
-        <div className=' flex '>
-          <div className=' text-xl'>Choose Image: </div>
-          <div> 
-            <input
-              className=' text-gray-400'
-              type="file"
-              name="brand-photo"
-              onChange={handleFileChange} // Handle image file selection
-            />
+            ></textarea>
           </div>
+          <div className=' flex '>
+            <div className=' text-xl'>Choose Image: </div>
+            <div> 
+              <input
+                className=' text-gray-400 w-full'
+                type="file"
+                name="brand-photo"
+                onChange={handleFileChange} // Handle image file selection
+              />
+            </div>
+            
+          </div>
+          <div className=' mt-3'>
+            <button type="submit" className=' text-white rounded-md p-2 bg-blue-500'>Create Brand</button>
+          </div>
+        </div>
           
-        </div>
-        <div>
-          <button type="submit" className=' text-white rounded-md p-2 bg-blue-500'>Create Brand</button>
-        </div>
-      </div>
         
-      
-    </form>
+      </form>
+    </div>
+    
     </>
   );
 };

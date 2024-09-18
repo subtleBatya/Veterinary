@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {API_URL} from '../api/BrandApi'
 import CreateBrand from './CreateBrand';
@@ -22,7 +23,8 @@ const BrandList = () => {
   return (
     <div>
       <h1>Brands</h1>
-      <CreateBrand />
+      <div className="btn"><Link to="/brands/create">Create Brand</Link></div>
+      {/* <CreateBrand /> */}
       <ul className=' mt-5'>
         {brands.map((brand) => (
           <li key={brand._id}>

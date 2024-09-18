@@ -2,6 +2,11 @@
  @tailwind components;
  @tailwind utilities;
 
+
+ .create_container {
+   @apply mx-auto w-[50%]
+ }
+
  .container {
    @apply mx-auto w-[10/14]
  }

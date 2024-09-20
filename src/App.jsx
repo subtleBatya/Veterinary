@@ -18,6 +18,7 @@ import CreateProduct from './pages/admin/products/CreateProduct';
 import BrandList from './components/BrandList'
 import CreateBrand from './components/CreateBrand';
 import EditProduct from './pages/admin/products/EditProduct';
+import EditBrand from './components/EditBrand';
 function App() {
   const Navigate = useNavigate();
     const isAdmin = useSelector(state=> state.auth.isAdmin);
@@ -50,6 +51,7 @@ function App() {
     <Route path="/admin/products/create" exact element={<CreateProduct />} />
     <Route path="/admin/products/edit/:id" exact element={<EditProduct />} />
     <Route path="/brands/create" exact element={<CreateBrand />} />
+    <Route path="/brands/edit/:id" exact element={<EditBrand />} />
     <Route path="*" exact element={<NotFound />} />
    </Routes>
       <Footer />

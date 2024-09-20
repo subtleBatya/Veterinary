@@ -1,6 +1,7 @@
 // CreateProduct.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { API_URL } from '../../../api/BrandApi';
 import axios from 'axios';
 
 
@@ -43,7 +44,7 @@ const CreateProduct = () => {
     }
 
     try {
-      const response = await axios.post('http://212.111.80.94/products', formData, {
+      const response = await axios.post(`${API_URL}/secret/product`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -63,7 +64,7 @@ const CreateProduct = () => {
           <div className='  md:col-span-8  rounded border '>
             <h2 className=' text-center mb-5'>Create Product</h2>
 
-            <form onSubmit={handleSubmit} className=' justify-center '>
+            <form onSubmit={handleSubmit} encType='multipart/form-data' className=' justify-center '>
         
               <div className=' w-[1/2] '>
                     {/* For Name Input */}
@@ -133,7 +134,7 @@ const CreateProduct = () => {
                     name="image"
                     placeholder="Image"
                     value={productData.image}
-                    onChange={handleChange}
+                    onChange={handleFileChange}
                     required
                   />
                   </div>

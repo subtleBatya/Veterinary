@@ -1,13 +1,46 @@
 // CreateProduct.jsx
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-
+import { API_URL } from '../../../api/BrandApi';
 
 
 const EditProduct = () => {
 
+  const params = useParams()
+  const [initialData, setInitialData] = useState()
   const navigate = useNavigate()
+
+    function getProduct() {
+        fetch("http://212.111.80.94/products/" + params.id)
+        .then(response => {
+            if (response.ok) {
+            return response.json()
+        }
+        
+        throw new Error()
+    })
+    .then(data => {
+        setInitialData(data)
+    })
+    .catch(error => {
+        alert("Harydyn detallaryny okap bilenok")
+    })
+    
+}
+
+useEffect(getProduct, [])
+  //   Try this with Axios later now do it with fetch API
+
+
+//   function getProduct() {
+//     try{
+//     const response = axios.get("http://212.111.80.94/products" + params.id)
+//     console.log('Product fetched successfully:', response.data)}
+//   catch (error) {
+//         console.error('Error fetching product:', error);
+//       }
+// }
 
   const [productData, setProductData] = useState({
     name: '',
@@ -43,7 +76,7 @@ const EditProduct = () => {
     }
 
     try {
-      const response = await axios.patch('http://212.111.80.94/products', formData, {
+      const response = await axios.patch(`${API_URL}/secret/brand`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -61,8 +94,18 @@ const EditProduct = () => {
       <div className=' container my-4'>
         <div className='row '>
           <div className='  md:col-span-8  rounded border '>
-            <h2 className=' text-center mb-5'>Create Product</h2>
+            <h2 className=' text-center mb-5'>Edit Product</h2>
 
+            <div className='   justify-center  '>
+                    <label className=' text-center text-lg me-2'>ID</label>
+                    <input
+                    readOnly
+                    className=' border-none blue form-control-plaintext'
+                    defaultValue={params.id}
+                    />
+            </div>
+            {
+                initialData &&
             <form onSubmit={handleSubmit} className=' justify-center '>
         
               <div className=' w-[1/2] '>
@@ -70,12 +113,28 @@ const EditProduct = () => {
                   <div className='   justify-center  '>
                     <label className=' text-center text-lg me-2'>Name</label>
                     <input
+                    defaultValue={initialData.name}
                     className=' border-none blue'
                       type="text"
                       name="name"
-                      placeholder="Product Name"
-                      value={productData.name}
-                      onChange={handleChange}
+                      
+                      
+                      
+                      required
+                    />
+                  </div>
+
+                  {/* For Brand Input */}
+                  <div className='   justify-center  '>
+                    <label className=' text-center text-lg me-2'>Brand</label>
+                    <input
+                    defaultValue={initialData.brand}
+                    className=' border-none blue'
+                      type="text"
+                      name="name"
+                      
+                      
+                      
                       required
                     />
                   </div>
@@ -85,11 +144,11 @@ const EditProduct = () => {
                     <label className=' text-lg me-2'>Price</label>
                     <input
                     className='  border-none blue'
+                    defaultValue={initialData.price}
                     type="number"
                     name="price"
-                    placeholder="Price"
-                    value={productData.price}
-                    onChange={handleChange}
+                    
+                    
                     required
                   />
                   </div>
@@ -100,10 +159,9 @@ const EditProduct = () => {
                     <label className=' text-center text-lg col-span-6'>Description</label>
                     <textarea
                     className='  outline-blue-500'
+                    
                     name="description"
-                    placeholder="Description"
-                    value={productData.description}
-                    onChange={handleChange}
+                    
                     required
                   ></textarea>
                   </div>    
@@ -112,20 +170,21 @@ const EditProduct = () => {
                   
                   <div className='   '>
                     <label className=' text-center text-lg col-span-6'>Category</label>
-                    <input
-                    className=' col-span-5 border-none blue'
-                    type="dropdown"
-                    name="category"
-                    placeholder="Category"
-                    value={productData.category}
-                    onChange={handleChange}
-                    required
-                  />
+                   <select name="category" id="" defaultValue={initialData.category}>
+                    <option value="">
+
+                    </option>
+                   </select>
                   </div>
 
                   {/* For Image */}
 
-                  <div className='   '>
+
+                  <div className=' offset-sm-4'>
+                    <img src={"http://212.111.80.94/products" + initialData.image} alt="" />
+                  </div>
+
+                  <div className=' '>
                     <label className=' text-center text-lg col-span-6'>Image</label>
                     <input
                     className=' col-span-5 border-none blue'
@@ -151,6 +210,7 @@ const EditProduct = () => {
               
         
       </form>
+       }
           </div>
         </div>
         

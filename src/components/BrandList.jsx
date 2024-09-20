@@ -25,7 +25,42 @@ const BrandList = () => {
       <h1>Brands</h1>
       <div className="btn"><Link to="/brands/create">Create Brand</Link></div>
       {/* <CreateBrand /> */}
-      <ul className=' mt-5'>
+      <table className="table">
+                <thead>
+                    <tr>
+                        
+                        <th>Name</th>
+                        <th>Image</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        brands.map((brand) => {
+                            return (
+                                <tr key={brand._id} className=' gap-8 '>
+                                    
+                                    <td>{brand.name}</td>
+                                    <td>
+                                      {brand.image && (
+                                        <div className=' w-[200px] h-[200px]'>
+                                          <img src={`${API_URL}` + `${brand.image}`   } alt="" />
+                                        </div>
+                                        )}
+                                    </td>
+                                    
+                                    
+                                    <td style={{width: "10px", whiteSpace: "nowrap" }}>
+                                        <Link className="btn btn-primary btn-sm me-1" to={"/brands/edit/" + brand._id  }>Edit</Link>
+                                        <button type="button" className="btn btn-danger btn-sm">Delete</button>
+                                    </td>
+                                </tr>
+                            )
+                        })
+                    }
+                </tbody>
+            </table>
+    {/*  <ul className=' mt-5'>
         {brands.map((brand) => (
           <li key={brand._id}>
             <h2>{brand.name}</h2>
@@ -37,10 +72,10 @@ const BrandList = () => {
 
             {/* {brand.image && (
               <img src={`${API_URL}/${brand.image}/uploads/`} alt={brand.name} />
-            )} */}
+            )} 
           </li>
         ))}
-      </ul>
+      </ul>  */}
     </div>
   );
 };

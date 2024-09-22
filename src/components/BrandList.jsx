@@ -51,7 +51,7 @@ const BrandList = () => {
                                     
                                     
                                     <td style={{width: "10px", whiteSpace: "nowrap" }}>
-                                        <Link className="btn btn-primary btn-sm me-1" to={"/brands/edit/" + brand._id  }>Edit</Link>
+                                        <Link className="btn btn-primary btn-sm me-1" to={"/brands/" + brand._id + "/edit"  }>Edit</Link>
                                         <button type="button" className="btn btn-danger btn-sm">Delete</button>
                                     </td>
                                 </tr>

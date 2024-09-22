@@ -29,7 +29,7 @@ const CreateBrand = () => {
 
     const formData = new FormData();
     formData.append('name', brandData.name);
-    formData.append('description', brandData.description);
+    // formData.append('description', brandData.description);
     if (brandData.image) {
       formData.append('brand-photo', brandData.image); // Append the image to the form data. The 'brand-photo' here should match the input field's name element
     }
@@ -64,7 +64,7 @@ const CreateBrand = () => {
                 required
               />
           </div>
-          <div className='space-x-4 flex  align-middle text-center'>
+          {/* <div className='space-x-4 flex  align-middle text-center'>
             <div className=' text-xl'>Description:</div>
             <textarea
               className=' outline-blue-500/50 indent-2 w-full'
@@ -74,7 +74,7 @@ const CreateBrand = () => {
               onChange={handleChange}
               required
             ></textarea>
-          </div>
+          </div> */}
           <div className=' flex '>
             <div className=' text-xl'>Choose Image: </div>
             <div> 

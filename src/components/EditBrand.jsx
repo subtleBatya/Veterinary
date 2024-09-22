@@ -1,37 +1,60 @@
 // EditBrand.jsx
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {API_URL} from '../api/BrandApi'
 
 const EditBrand = () => {
 
-  const params = useParams()
+  const { id } = useParams();
+  const navigate = useNavigate();
+//   const params = useParams()
   const [brandData, setBrandData] = useState({
     name: '',
     description: '',
     image: null, // Add a field to store the image
   });
 
-  function getBrand() {
-    fetch("http://212.111.80.94/brands/" + params.id)
-    .then(response => {
-        if (response.ok) {
-        return response.json()
-    }
+//   const [image, setImage] = useState(null);
+
+  // Fetch the brand details when the component mounts
+  useEffect(() => {
+    const fetchBrand = async () => {
+      try {
+        const response = await axios.get(`http://212.111.80.94/brands/${id}`);
+        console.log(response.data);
+        setBrandData({
+          name: response.data.name,
+          description: response.data.description,
+        });
+      } catch (error) {
+        console.error('Error fetching brand details:', error);
+      }
+    };
+
+    fetchBrand();
+  }, [id]);
+
+
+//   function getBrand() {
+//     fetch("http://212.111.80.94/brands/" + params.id)
+//     .then(response => {
+//         if (response.ok) {
+//         return response.json()
+//     }
     
-    throw new Error()
-})
-.then(data => {
-    setInitialData(data)
-})
-.catch(error => {
-    alert("Harydyn detallaryny okap bilenok")
-})
+//     throw new Error()
+// })
+// .then(data => {
+//     setInitialData(data)
+// })
+// .catch(error => {
+//     alert("Harydyn detallaryny okap bilenok")
+// })
 
-}
+// }
 
-useEffect(getBrand, [])
+// useEffect(getBrand, [])
 
   const handleChange = (e) => {
     setBrandData({
@@ -40,6 +63,10 @@ useEffect(getBrand, [])
     });
   };
 
+//   const handleFileChange = (e) => {
+//     setImage(e.target.files[0]);
+//   };
+
   const handleFileChange = (e) => {
     setBrandData({
       ...brandData,
@@ -47,23 +74,25 @@ useEffect(getBrand, [])
     });
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
     formData.append('name', brandData.name);
-    formData.append('description', brandData.description);
+    // formData.append('description', brandData.description);
     if (brandData.image) {
       formData.append('brand-photo', brandData.image); // Append the image to the form data. The 'brand-photo' here should match the input field's name element
     }
 
     try {
-      const response = await axios.patch(`${API_URL}/secret/brand`, formData, {
+      const response = await axios.patch(`${API_URL}/secret/brand/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       console.log('Brand created successfully:', response.data);
+      navigate('/brands');
     } catch (error) {
       console.error('Error creating brand:', error.response?.data || error.message);
     }
@@ -78,9 +107,9 @@ useEffect(getBrand, [])
 <div className='   justify-center  '>
         <label className=' text-center text-lg me-2'>ID</label>
         <input
-        readOnly
+        // readOnly
         className=' border-none blue form-control-plaintext'
-        defaultValue={params.id}
+        defaultValue={brandData.id}
         />
 </div>
       <form onSubmit={handleSubmit} encType='multipart/form-data' className=' mt-12 create_container border-blue-500/50 border-3 rounded' >
@@ -91,7 +120,8 @@ useEffect(getBrand, [])
               <input
                 className=' outline-blue-500/50 indent-2 text-black w-full'
                 type="text"
-                readOnly
+                name="name"
+                // readOnly
                 value={brandData.name}
                 onChange={handleChange}
                 required
@@ -102,7 +132,6 @@ useEffect(getBrand, [])
             <textarea
               className=' outline-blue-500/50 indent-2 w-full'
               name="description"
-              placeholder="Description"
               value={brandData.description}
               onChange={handleChange}
               required
@@ -115,6 +144,7 @@ useEffect(getBrand, [])
                 className=' text-gray-400 w-full'
                 type="file"
                 name="brand-photo"
+                onChange={handleFileChange}
                 readOnly
                 // onChange={handleFileChange} // Handle image file selection
               />

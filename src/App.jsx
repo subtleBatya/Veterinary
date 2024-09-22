@@ -51,7 +51,7 @@ function App() {
     <Route path="/admin/products/create" exact element={<CreateProduct />} />
     <Route path="/admin/products/edit/:id" exact element={<EditProduct />} />
     <Route path="/brands/create" exact element={<CreateBrand />} />
-    <Route path="/brands/edit/:id" exact element={<EditBrand />} />
+    <Route path="/brands/:id/edit" exact element={<EditBrand />} />
     <Route path="*" exact element={<NotFound />} />
    </Routes>
       <Footer />

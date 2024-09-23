@@ -47,12 +47,12 @@ function App() {
       <ProductList />
     </ProtectedRoute>
     } />
-    <Route path="/contact" exact element={<Contact />} />
-    <Route path="/admin/products/create" exact element={<CreateProduct />} />
-    <Route path="/admin/products/edit/:id" exact element={<EditProduct />} />
-    <Route path="/brands/create" exact element={<CreateBrand />} />
-    <Route path="/brands/:id/edit" exact element={<EditBrand />} />
-    <Route path="*" exact element={<NotFound />} />
+    <Route path="/contact"  element={<Contact />} />
+    <Route path="/admin/products/create"  element={<CreateProduct />} />
+    <Route path="/admin/products/edit/:id"  element={<EditProduct />} />
+    <Route path="/brands/create"  element={<CreateBrand />} />
+    <Route path="/brands/:id/edit"  element={<EditBrand />} />
+    <Route path="*"  element={<NotFound />} />
    </Routes>
       <Footer />
       <div className=' mb-[1000px]'></div>

@@ -10,6 +10,7 @@ const EditBrand = () => {
   const navigate = useNavigate();
 //   const params = useParams()
   const [brandData, setBrandData] = useState({
+    id: '',
     name: '',
     description: '',
     image: null, // Add a field to store the image
@@ -21,9 +22,10 @@ const EditBrand = () => {
   useEffect(() => {
     const fetchBrand = async () => {
       try {
-        const response = await axios.get(`http://212.111.80.94/brands/${id}`);
+        const response = await axios.get(`http://212.111.80.94/brand/${id}`);
         console.log(response.data);
         setBrandData({
+          id: response.data.id,
           name: response.data.name,
           description: response.data.description,
         });
@@ -107,7 +109,7 @@ const EditBrand = () => {
 <div className='   justify-center  '>
         <label className=' text-center text-lg me-2'>ID</label>
         <input
-        // readOnly
+        readOnly
         className=' border-none blue form-control-plaintext'
         defaultValue={brandData.id}
         />

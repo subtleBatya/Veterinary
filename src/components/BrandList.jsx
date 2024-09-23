@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {API_URL} from '../api/BrandApi'
-import CreateBrand from './CreateBrand';
+
 
 const BrandList = () => {
   const [brands, setBrands] = useState([]);
@@ -19,6 +19,15 @@ const BrandList = () => {
 
     fetchBrands();
   }, []);
+
+  const deleteBrand = async (id) => {
+    try {
+      await axios.delete(`${API_URL}/secret/brand/${id}`);
+      setBrands(brands.filter(brand => brand._id !== id));
+    } catch (error) {
+      console.error('Error deleting brand:', error.response?.data || error.message);
+    }
+  };
 
   return (
     <div>
@@ -52,7 +61,7 @@ const BrandList = () => {
                                     
                                     <td style={{width: "10px", whiteSpace: "nowrap" }}>
                                         <Link className="btn btn-primary btn-sm me-1" to={"/brands/" + brand._id + "/edit"  }>Edit</Link>
-                                        <button type="button" className="btn btn-danger btn-sm">Delete</button>
+                                        <button onClick={() => deleteBrand(brand._id)} type="button"  className="btn btn-danger btn-sm">Delete</button>
                                     </td>
                                 </tr>
                             )

@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import {API_URL} from '../api/BrandApi'
+import {API_URL} from '../api/CategoryApi'
 
-const EditBrand = () => {
+const EditCategory = () => {
 
   const { id } = useParams(); // HERE 
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const EditBrand = () => {
   useEffect(() => {
     const fetchBrand = async () => {
       try {
-        const response = await axios.get(`http://212.111.80.94/brand/${id}`); // HERE WE USE AXIOS
+        const response = await axios.get(`http://212.111.80.94/category/${id}`); // HERE WE USE AXIOS
         console.log(response.data);
         setBrandData({
         //   id: response.data._id,
@@ -85,11 +85,11 @@ const EditBrand = () => {
     formData.append('name', brandData.name);
     // formData.append('description', brandData.description);
     if (brandData.image) {
-      formData.append('brand-photo', brandData.image); // Append the image to the form data. The 'brand-photo' here should match the input field's name element
+      formData.append('category-photo', brandData.image); // Append the image to the form data. The 'brand-photo' here should match the input field's name element
     }
 
     try {
-      const response = await axios.patch(`${API_URL}/secret/brand/${id}`, formData, { // HERE 
+      const response = await axios.patch(`${API_URL}/secret/category/${id}`, formData, { // HERE 
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -105,7 +105,7 @@ const EditBrand = () => {
     <>
     <div className=' '>
 
-    <h2 className=' text-center mb-5'>Edit Brand</h2>
+    <h2 className=' text-center mb-5'>Edit Category</h2>
 
 <div className='   justify-center  '>
         <label className=' text-center text-lg me-2'>ID</label>
@@ -119,7 +119,7 @@ const EditBrand = () => {
         
         <div className=' m-4 space-y-4'>
           <div className=' space-x-4 flex align-middle text-center' >
-            <label className=' text-xl'>Brand:</label>
+            <label className=' text-xl'>Category:</label>
               <input
                 className=' border-blue-500/50 outline-blue-500/50 indent-2 w-full'
                 type="text"
@@ -171,7 +171,7 @@ const EditBrand = () => {
   );
 };
 
-export default EditBrand;
+export default EditCategory;
 
 
 // // src/components/CreateBrand.js

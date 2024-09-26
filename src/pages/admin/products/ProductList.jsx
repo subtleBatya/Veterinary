@@ -10,6 +10,7 @@ export default function ProductList() {
     const handleLogout = () => {
         dispatch(logout());
     };
+    
 
     function getProducts(){
         fetch ("http://212.111.80.94/products")

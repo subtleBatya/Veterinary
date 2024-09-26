@@ -19,6 +19,10 @@ import BrandList from './components/BrandList'
 import CreateBrand from './components/CreateBrand';
 import EditProduct from './pages/admin/products/EditProduct';
 import EditBrand from './components/EditBrand';
+import CreateCategory from './components/CreateCategory';
+import EditCategory from './components/EditCategory';
+import Home from './pages/Home';
+
 function App() {
   const Navigate = useNavigate();
     const isAdmin = useSelector(state=> state.auth.isAdmin);
@@ -38,7 +42,8 @@ function App() {
    <Navbar />
     {/* {isAdmin ? <AdminHome /> : <Login />} */}
    <Routes>
-    <Route path="Veterinary/" exact element={<AdminHome />} />
+    <Route path="Veterinary/" exact element={<Home />} />
+    <Route path="/admin" exact element={<AdminHome />} />
     <Route path="/login" element={<Login />} />
     <Route path="/categories" element={<CategoryList />} />
     <Route path="/brands" element={<BrandList />} />
@@ -52,6 +57,8 @@ function App() {
     <Route path="/admin/products/edit/:id"  element={<EditProduct />} />
     <Route path="/brands/create"  element={<CreateBrand />} />
     <Route path="/brands/:id/edit"  element={<EditBrand />} />
+    <Route path="/categories/create"  element={<CreateCategory />} />
+    <Route path="/categories/:id/edit"  element={<EditCategory />} />
     <Route path="*"  element={<NotFound />} />
    </Routes>
       <Footer />

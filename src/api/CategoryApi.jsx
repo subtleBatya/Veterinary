@@ -1,5 +1,5 @@
 import axios from 'axios'
-const API_URL = 'http://212.111.80.94';
+export const API_URL = 'http://212.111.80.94';
 
 export const getAllCategories = async () => {
     try {

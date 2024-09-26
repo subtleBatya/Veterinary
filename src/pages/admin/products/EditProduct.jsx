@@ -7,12 +7,27 @@ import { API_URL } from '../../../api/BrandApi';
 
 const EditProduct = () => {
 
-  const params = useParams()
+  const params = useParams() // HERE
   const [initialData, setInitialData] = useState()
   const navigate = useNavigate()
 
+  const [cats, setCats] = useState([]);
+    useEffect(() => {
+        const fetchCats = async () => {
+          try {
+            const response = await axios.get(`${API_URL}/categories`);
+            setCats(response.data);
+          } catch (error) {
+            console.error('Error fetching Cats:', error);
+          }
+        };
+    
+        fetchCats();
+      }, []);
+
+
     function getProduct() {
-        fetch("http://212.111.80.94/products/" + params.id)
+        fetch("http://212.111.80.94/product/" + params.id) // HERE WE USE FETCH
         .then(response => {
             if (response.ok) {
             return response.json()
@@ -76,7 +91,7 @@ useEffect(getProduct, [])
     }
 
     try {
-      const response = await axios.patch(`${API_URL}/secret/brand`, formData, {
+      const response = await axios.patch(`${API_URL}/secret/product/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -101,7 +116,7 @@ useEffect(getProduct, [])
                     <input
                     readOnly
                     className=' border-none blue form-control-plaintext'
-                    defaultValue={params.id}
+                    defaultValue={params.id} // HERE 
                     />
             </div>
             {
@@ -128,10 +143,10 @@ useEffect(getProduct, [])
                   <div className='   justify-center  '>
                     <label className=' text-center text-lg me-2'>Brand</label>
                     <input
-                    defaultValue={initialData.brand}
+                    defaultValue={initialData.brand_id?.name} // Manage this later
                     className=' border-none blue'
                       type="text"
-                      name="name"
+                      name="brands"
                       
                       
                       
@@ -159,23 +174,49 @@ useEffect(getProduct, [])
                     <label className=' text-center text-lg col-span-6'>Description</label>
                     <textarea
                     className='  outline-blue-500'
-                    
+                    defaultValue={initialData.description}
                     name="description"
-                    
+                    type="text"
                     required
                   ></textarea>
                   </div>    
 
                   {/* For Category */}
                   
-                  <div className='   '>
+
+                <div>
+                    <label  className=' text-center text-lg col-span-6'>Brand</label>
+                    <select name="brand" value={productData.brand} onChange={handleChange} required>
+                        <option value="" disabled>Select a brand</option>
+                        {cats.map((cat) => (
+                        <option key={cat._id} value={cat._id}>
+                            {cat.name}
+                        </option>
+                        ))}
+                    </select>
+                </div>
+
+
+                  {/* <div className='   '>
                     <label className=' text-center text-lg col-span-6'>Category</label>
                    <select name="category" id="" defaultValue={initialData.category}>
                     <option value="">
-
+                    {
+                        cats.map((cat, index) => {
+                            return (
+                                <div key={index}>
+                                    <td>{cat.name}</td>
+                                    
+                                    
+                                    
+                                    
+                                </div>
+                            )
+                        })
+                    }
                     </option>
                    </select>
-                  </div>
+                  </div> */}
 
                   {/* For Image */}
 

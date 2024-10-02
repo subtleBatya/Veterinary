@@ -1,5 +1,5 @@
 // CreateProduct.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../../api/BrandApi';
 import axios from 'axios';
@@ -7,8 +7,35 @@ import axios from 'axios';
 
 
 const CreateProduct = () => {
-
   const navigate = useNavigate()
+  const [brands, setBrands] = useState([]);
+    useEffect(() => {
+        const fetchBrands = async () => {
+          try {
+            const response = await axios.get(`${API_URL}/products`);
+            setBrands(response.data);
+          } catch (error) {
+            console.error('Error fetching Cats:', error);
+          }
+        };
+    
+        fetchBrands();
+      }, []);
+  
+
+  const [cats, setCats] = useState([]);
+    useEffect(() => {
+        const fetchCats = async () => {
+          try {
+            const response = await axios.get(`${API_URL}/categories`);
+            setCats(response.data);
+          } catch (error) {
+            console.error('Error fetching Cats:', error);
+          }
+        };
+    
+        fetchCats();
+      }, []);
 
   const [productData, setProductData] = useState({
     name: '',
@@ -40,7 +67,7 @@ const CreateProduct = () => {
     formData.append('description', productData.description);
     formData.append('category', productData.category);
     if (productData.image) {
-      formData.append('image', productData.image);
+      formData.append('product-photo', productData.image);
     }
 
     try {
@@ -80,6 +107,19 @@ const CreateProduct = () => {
                       required
                     />
                   </div>
+
+                  {/* For Brand Input */}
+                  <div className='   justify-center  '>
+                    <label className=' text-center text-lg me-2'>Brand</label>
+                    <select name="brand" value={productData.brand} onChange={handleChange} required>
+                        <option value="" disabled>Select a brand</option>
+                        {brands.map((brand) => (
+                        <option key={brand._id} value={brand._id}>
+                            {brand.name}
+                        </option>
+                        ))}
+                    </select>
+                  </div>
                   
                   {/* For Price Input */}
                   <div className=' justify-center  '>
@@ -113,15 +153,14 @@ const CreateProduct = () => {
                   
                   <div className='   '>
                     <label className=' text-center text-lg col-span-6'>Category</label>
-                    <input
-                    className=' col-span-5 border-none blue'
-                    type="dropdown"
-                    name="category"
-                    placeholder="Category"
-                    value={productData.category}
-                    onChange={handleChange}
-                    required
-                  />
+                    <select name="category" value={productData.category} onChange={handleChange} required>
+                        <option value="" disabled>Select a category</option>
+                        {cats.map((cat) => (
+                        <option key={cat._id} value={cat._id}>
+                            {cat.name}
+                        </option>
+                        ))}
+                    </select>
                   </div>
 
                   {/* For Image */}

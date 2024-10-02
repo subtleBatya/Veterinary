@@ -7,9 +7,24 @@ import { API_URL } from '../../../api/BrandApi';
 
 const EditProduct = () => {
 
-  const params = useParams() // HERE
-  const [initialData, setInitialData] = useState()
+  const { id } = useParams() // HERE
+//   const [initialData, setInitialData] = useState()
   const navigate = useNavigate()
+
+  const [brands, setBrands] = useState([]);
+    useEffect(() => {
+        const fetchBrands = async () => {
+          try {
+            const response = await axios.get(`${API_URL}/brands`);
+            setBrands(response.data);
+          } catch (error) {
+            console.error('Error fetching Cats:', error);
+          }
+        };
+    
+        fetchBrands();
+      }, []);
+  
 
   const [cats, setCats] = useState([]);
     useEffect(() => {
@@ -26,25 +41,58 @@ const EditProduct = () => {
       }, []);
 
 
-    function getProduct() {
-        fetch("http://212.111.80.94/product/" + params.id) // HERE WE USE FETCH
-        .then(response => {
-            if (response.ok) {
-            return response.json()
-        }
-        
-        throw new Error()
-    })
-    .then(data => {
-        setInitialData(data)
-    })
-    .catch(error => {
-        alert("Harydyn detallaryny okap bilenok")
-    })
-    
-}
+      const [productData, setProductData] = useState({
+        name: '',
+        price: '',
+        description: '',
+        category: '',
+        brand: '',
+        image: null,
+      });
 
-useEffect(getProduct, [])
+      useEffect(() => {
+        const getProduct = async () => {
+          try {
+            const response = await axios.get(`http://212.111.80.94/product/${id}`); // HERE WE USE AXIOS
+            console.log(response.data);
+            setProductData({
+            //   id: response.data._id,
+              name: response.data.name || '', // Default to an empty string if undefined
+              price: response.data.price || '',
+              description: response.data.descrition || '',
+              category: response.data.category || '',
+              brand: response.data.brand || '',
+              
+            //   description: response.data.description || '',
+              image: null,
+            });
+          } catch (error) {
+            console.error('Error fetching brand details:', error);
+          }
+        };
+    
+        getProduct();
+      }, [id]);
+
+//     function getProduct() {
+//         fetch("http://212.111.80.94/product/" ) // HERE WE USE FETCH
+//         .then(response => {
+//             if (response.ok) {
+//             return response.json()
+//         }
+        
+//         throw new Error()
+//     })
+//     .then(data => {
+//         setInitialData(data)
+//     })
+//     .catch(error => {
+//         alert("Harydyn detallaryny okap bilenok")
+//     })
+    
+// }
+
+// useEffect(getProduct, [])
   //   Try this with Axios later now do it with fetch API
 
 
@@ -57,13 +105,7 @@ useEffect(getProduct, [])
 //       }
 // }
 
-  const [productData, setProductData] = useState({
-    name: '',
-    price: '',
-    description: '',
-    category: '',
-    image: null,
-  });
+  
 
   const handleChange = (e) => {
     setProductData({
@@ -71,6 +113,7 @@ useEffect(getProduct, [])
       [e.target.name]: e.target.value,
     });
   };
+
 
   const handleFileChange = (e) => {
     setProductData({
@@ -87,11 +130,11 @@ useEffect(getProduct, [])
     formData.append('description', productData.description);
     formData.append('category', productData.category);
     if (productData.image) {
-      formData.append('image', productData.image);
+      formData.append('product-photo', productData.image);
     }
 
     try {
-      const response = await axios.patch(`${API_URL}/secret/product/`, formData, {
+      const response = await axios.patch(`${API_URL}/secret/product/${id}` , formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -100,7 +143,7 @@ useEffect(getProduct, [])
       navigate("/admin/products")
       // Optionally, redirect to products page or clear the form
     } catch (error) {
-      console.error('Error creating product:', error);
+      console.error('Error creating product:', error.response?.data || error.message);
     }
   };
 
@@ -116,42 +159,37 @@ useEffect(getProduct, [])
                     <input
                     readOnly
                     className=' border-none blue form-control-plaintext'
-                    defaultValue={params.id} // HERE 
+                    defaultValue={productData.id} // HERE 
                     />
             </div>
-            {
-                initialData &&
-            <form onSubmit={handleSubmit} className=' justify-center '>
+            
+            <form onSubmit={handleSubmit} encType='multipart/form-data' className=' justify-center '>
         
               <div className=' w-[1/2] '>
                     {/* For Name Input */}
                   <div className='   justify-center  '>
                     <label className=' text-center text-lg me-2'>Name</label>
                     <input
-                    defaultValue={initialData.name}
+                    type="text"
+                    name="name"
+                    value={productData.name || ''}
+                    onChange={handleChange}
                     className=' border-none blue'
-                      type="text"
-                      name="name"
-                      
-                      
-                      
-                      required
+                    required
                     />
                   </div>
 
                   {/* For Brand Input */}
                   <div className='   justify-center  '>
                     <label className=' text-center text-lg me-2'>Brand</label>
-                    <input
-                    defaultValue={initialData.brand_id?.name} // Manage this later
-                    className=' border-none blue'
-                      type="text"
-                      name="brands"
-                      
-                      
-                      
-                      required
-                    />
+                    <select name="brand" value={productData.brand} onChange={handleChange} required>
+                        <option value="" disabled>Select a brand</option>
+                        {brands.map((brand) => (
+                        <option key={brand._id} value={brand._id}>
+                            {brand.name}
+                        </option>
+                        ))}
+                    </select>
                   </div>
                   
                   {/* For Price Input */}
@@ -159,11 +197,10 @@ useEffect(getProduct, [])
                     <label className=' text-lg me-2'>Price</label>
                     <input
                     className='  border-none blue'
-                    defaultValue={initialData.price}
+                    value={productData.price || ''}
                     type="number"
                     name="price"
-                    
-                    
+                    onChange={handleChange}
                     required
                   />
                   </div>
@@ -174,9 +211,10 @@ useEffect(getProduct, [])
                     <label className=' text-center text-lg col-span-6'>Description</label>
                     <textarea
                     className='  outline-blue-500'
-                    defaultValue={initialData.description}
+                    value={productData.description}
                     name="description"
                     type="text"
+                    onChange={handleChange}
                     required
                   ></textarea>
                   </div>    
@@ -185,9 +223,9 @@ useEffect(getProduct, [])
                   
 
                 <div>
-                    <label  className=' text-center text-lg col-span-6'>Brand</label>
-                    <select name="brand" value={productData.brand} onChange={handleChange} required>
-                        <option value="" disabled>Select a brand</option>
+                    <label  className=' text-center text-lg col-span-6'>Category</label>
+                    <select name="category" value={productData.category} onChange={handleChange} required>
+                        <option value="" disabled>Select a category</option>
                         {cats.map((cat) => (
                         <option key={cat._id} value={cat._id}>
                             {cat.name}
@@ -221,26 +259,29 @@ useEffect(getProduct, [])
                   {/* For Image */}
 
 
-                  <div className=' offset-sm-4'>
+                  {/* <div className=' offset-sm-4'>
                     <img src={"http://212.111.80.94/products" + initialData.image} alt="" />
-                  </div>
+                  </div> */}
 
                   <div className=' '>
-                    <label className=' text-center text-lg col-span-6'>Image</label>
+                    <label className=' text-center text-lg col-span-6'>Choose Image</label>
                     <input
                     className=' col-span-5 border-none blue'
                     type="file"
                     name="image"
-                    placeholder="Image"
-                    value={productData.image}
-                    onChange={handleChange}
-                    required
-                  />
+                    
+                    onChange={handleFileChange}
+                    />
+                  
+                    <div>
+                        {
+                        productData.image && <img src={`http://212.111.80.94/uploads/${productData.image}`} alt='Product Img' width="100" />}
+                    </div>
                   </div>
 
                   <div className=''>
                     <div className=''>
-                        <button type="submit">Create Product</button>
+                        <button type="submit">Edit Product</button>
                     </div>
                     <div>
                       <Link to="/admin/products">Cancel</Link>
@@ -251,7 +292,7 @@ useEffect(getProduct, [])
               
         
       </form>
-       }
+       
           </div>
         </div>
         

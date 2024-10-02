@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import {API_URL} from '../../../api/BrandApi'
 import { logout } from "../../../store/AuthSlice";
 
 export default function ProductList() {
@@ -11,24 +13,27 @@ export default function ProductList() {
         dispatch(logout());
     };
     
+    useEffect(() => {
+        const getProducts = async () => {
+          try {
+            const response = await axios.get(`${API_URL}/products`);
+            setProducts(response.data);
+          } catch (error) {
+            console.error('Error fetching brands:', error);
+          }
+        };
+    
+        getProducts();
+      }, []);
 
-    function getProducts(){
-        fetch ("http://212.111.80.94/products")
-        .then(response => {
-            if (response.ok) {
-                return response.json()
-            }
-            throw new Error()
-        })
-        .then(data => {
-            setProducts(data)
-        })
-        .catch(error => {
-            alert("Unable to get the data")
-        })
-    }
-
-    useEffect(getProducts, [])
+      const deleteProduct = async (id) => {
+        try {
+          await axios.delete(`${API_URL}/secret/product/${id}`);
+          setProducts(products.filter(product => product._id !== id));
+        } catch (error) {
+          console.error('Error deleting product:', error.response?.data || error.message);
+        }
+      };
 
 
     return (
@@ -39,7 +44,7 @@ export default function ProductList() {
                 <div className="col">
                     <Link className="btn btn-primary me-1" to="/admin/products/create">Create Product</Link>
                     <button type="button" className="btn btn-outline-primary"
-                    onClick={getProducts}>Refresh</button>
+                    onClick={() => getProducts()}>Refresh</button>
                     <button onClick={handleLogout}>Logout</button>
                 </div>
                 <div className="col">
@@ -73,12 +78,17 @@ export default function ProductList() {
                                     <td>{product.category}</td>
                                     <td>{product.price}</td>
                                     
-                                    <td><img src={"  http://212.111.80.94/products/" + product.image } 
-                                        width="100" alt="..." /></td>
+                                    <td>
+                                    {product.image && (
+                                        <div className=' w-[200px] h-[200px]'>
+                                          <img src={`${API_URL}` + `${product.image}`   } alt="" />
+                                        </div>
+                                        )}
+                                    </td>
                                     <td>{product.createdAt}</td>
                                     <td style={{width: "10px", whiteSpace: "nowrap" }}>
                                         <Link className="btn btn-primary btn-sm me-1" to={"/admin/products/edit/" + product._id}>Edit</Link>
-                                        <button type="button" className="btn btn-danger btn-sm">Delete</button>
+                                        <button onClick={() => deleteProduct(product._id)} type="button" className="btn btn-danger btn-sm">Delete</button>
                                     </td>
                                 </tr>
                             )

@@ -1,21 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+
+import React from 'react'
+// import Navbar from "./components/Navbar";
 
 
+// import RecentBlogs from "./pages/RecentBlogs";
+// import Footer from "./Footer";
+// import Navbar from '../components/navbar/Navbar';
+import MainSlider from '../components/test/MainSlider';
+// import Header from '../components/Header/Header'
+import News from '../components/test/News';
+import Categories from '../components/test/Categories';
+import Newsletters from '../components/test/Newsletters';
+import Multimedia from '../components/test/Multimedia';
+import Gallery from '../components/test/Gallery';
 
-const Home = () => {
-  
+function Home() {
+    return (
+        <div className=''>
+            
+            <MainSlider/>
+            <News/>
+            <Categories/>
+            <Newsletters/>
+            <Multimedia/>
+            <Gallery/>  
+            {/* <About /> */}
+            {/* <Courses /> */}
+            {/* <RecentBlogs/> */}
+        </div>
+    )
+}
 
-  return (
-    <div>
-      <h1>Welcome to the Home Page</h1>
-      
-    </div>
-  );
-};
+export default Home
 
-export default Home;
 
 
 

@@ -8,7 +8,7 @@
  }
 
  .container {
-   @apply mx-auto w-[10/14]
+   @apply mx-auto
  }
 
  .bgBlue {

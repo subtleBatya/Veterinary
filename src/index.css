@@ -7,9 +7,9 @@
    @apply mx-auto w-[50%]
  }
 
- .container {
+ /* .container {
    @apply mx-auto
- }
+ } */
 
  .bgBlue {
    @apply bg-blue-500

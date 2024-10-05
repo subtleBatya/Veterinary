@@ -9,7 +9,13 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Welcome to the Home Page</h1>
+      <div className='container-xl'>
+        {/* <div className="flex justify-between items-center">
+          <div>
+            <img src="" alt="" />
+          </div>
+        </div> */}
+      </div>
       
     </div>
   );

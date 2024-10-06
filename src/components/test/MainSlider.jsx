@@ -41,7 +41,7 @@ function MainSlider() {
                     }}
                 >
                     <SwiperSlide className=' text-white'>
-                        <div className='flex w-full p-4 aspect-[9/4] bg-[#304D30]'>
+                        <div className='flex w-full  aspect-[9/4] bg-[#304D30]'>
                             <div className='w-1/2 relative pe-5'>
 
                                 <div className='text-goldColor w-3/4  font-semibold text-[30px] capitalize '>

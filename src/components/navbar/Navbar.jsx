@@ -67,6 +67,7 @@ const Navbar = () => {
             <img src="Logo.png" alt="Logo" width={100} className="" />
           </div>
           
+          
           {/* Строка поиска */}
           <div className="hidden md:block flex-grow mx-4">
             <div className="relative w-full max-w-lg mx-auto">

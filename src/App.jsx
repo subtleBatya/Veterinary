@@ -43,22 +43,22 @@ function App() {
     {/* {isAdmin ? <AdminHome /> : <Login />} */}
    <Routes>
     <Route path="Veterinary/" exact element={<Home />} />
-    <Route path="/admin" exact element={<AdminHome />} />
-    <Route path="/login" element={<Login />} />
-    <Route path="/categories" element={<CategoryList />} />
-    <Route path="/brands" element={<BrandList />} />
-    <Route path="/admin/products"  element={
+    <Route path="Veterinary/admin"  element={<AdminHome />} />
+    <Route path="Veterinary/login" element={<Login />} />
+    <Route path="Veterinary/categories" element={<CategoryList />} />
+    <Route path="Veterinary/brands" element={<BrandList />} />
+    <Route path="Veterinary/admin/products"  element={
     <ProtectedRoute>
       <ProductList />
     </ProtectedRoute>
     } />
-    <Route path="/contact"  element={<Contact />} />
-    <Route path="/admin/products/create"  element={<CreateProduct />} />
-    <Route path="/admin/products/edit/:id"  element={<EditProduct />} />
-    <Route path="/brands/create"  element={<CreateBrand />} />
-    <Route path="/brands/:id/edit"  element={<EditBrand />} />
-    <Route path="/categories/create"  element={<CreateCategory />} />
-    <Route path="/categories/:id/edit"  element={<EditCategory />} />
+    <Route path="Veterinary/contact"  element={<Contact />} />
+    <Route path="Veterinary/admin/products/create"  element={<CreateProduct />} />
+    <Route path="Veterinary/admin/products/edit/:id"  element={<EditProduct />} />
+    <Route path="Veterinary/brands/create"  element={<CreateBrand />} />
+    <Route path="Veterinary/brands/:id/edit"  element={<EditBrand />} />
+    <Route path="Veterinary/categories/create"  element={<CreateCategory />} />
+    <Route path="Veterinary/categories/:id/edit"  element={<EditCategory />} />
     <Route path="*"  element={<NotFound />} />
    </Routes>
       <Footer />

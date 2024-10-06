@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {API_URL} from '../api/BrandApi'
-
-
+// import MainSlider from '../components/test/MainSlider'
+import Categories from '../components/test/Categories';
 const Home = () => {
   
 
@@ -15,6 +15,9 @@ const Home = () => {
             <img src="" alt="" />
           </div>
         </div> */}
+        <div>HELLO</div>
+        {/* <MainSlider /> */}
+        <Categories />
       </div>
       
     </div>

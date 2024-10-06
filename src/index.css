@@ -7,9 +7,13 @@
    @apply mx-auto w-[50%]
  }
 
- /* .container {
-   @apply mx-auto
- } */
+ .esas_bg {
+   @apply bg-[#fff3eb]
+ }
+
+ .esas_container {
+   @apply mx-auto w-[95%]
+ }
 
  .bgBlue {
    @apply bg-blue-500

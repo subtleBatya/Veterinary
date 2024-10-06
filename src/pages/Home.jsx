@@ -4,12 +4,13 @@ import axios from 'axios';
 import {API_URL} from '../api/BrandApi'
 // import MainSlider from '../components/test/MainSlider'
 import Categories from '../components/test/Categories';
+import Product from '../components/test/Product';
 const Home = () => {
   
 
   return (
-    <div>
-      <div className='container-xl'>
+    <div className='esas_bg'>
+      <div className='esas_container '>
         {/* <div className="flex justify-between items-center">
           <div>
             <img src="" alt="" />
@@ -17,7 +18,22 @@ const Home = () => {
         </div> */}
         <div>HELLO</div>
         {/* <MainSlider /> */}
-        <Categories />
+            <Categories />
+            <div className="grid grid-cols-4 mt-5 gap-3">
+                    <Product/>
+                    <Product/>
+                    <Product/>
+                    <Product/>
+            </div>
+            <div>
+                <div>
+                    <h1>HEllo</h1>
+                    <h4>HELO</h4>
+                </div>
+            </div>
+            <div className="mb-[1000px]"></div>
+
+
       </div>
       
     </div>

@@ -6,7 +6,7 @@ import priceTag from '../../images/price-tag.png'
 
 function Categories() {
     return (
-        <div className='container mt-20 pt-10 grid grid-cols-4 gap-3'>
+        <div className=' mt-20 pt-10 grid grid-cols-4 gap-3'>
             <NavLink to={`/tazelikler/`} className='bg-[hsl(104,100%,93%)] rounded-lg cursor-pointer w-full aspect-auto flex items-end p-4 text-[#477139] font-semibold '>
                 
             <div className=' flex items-center gap-3 font-bold w-full '>

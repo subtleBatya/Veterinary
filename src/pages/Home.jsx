@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <div className='esas_bg'>
-      <div className='esas_container '>
+      <div className=' '>
         {/* <div className="flex justify-between items-center">
           <div>
             <img src="" alt="" />
@@ -19,7 +19,7 @@ const Home = () => {
         <div>HELLO</div>
         <MainSlider />
             <Categories />
-            <div className="grid grid-cols-4 mt-5 gap-3">
+            <div className="esas_container grid grid-cols-4 mt-5 gap-3">
                     <Product/>
                     <Product/>
                     <Product/>

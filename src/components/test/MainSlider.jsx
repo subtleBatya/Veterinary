@@ -20,15 +20,15 @@ function MainSlider() {
 //      changeLanguage(newLanguage);
 //    }
     return (
-        <div className='  mx-auto'>
-            <div className=' flex justify-center items-center mx-auto  pt-10'>
-            <button className="custom-prev-button w-[5vw] flex mx-auto justify-center items-center  ">
+        <div className='  '>
+            <div className=' flex justify-center items-center pt-10'>
+            {/* <button className="custom-prev-button w-[5vw] flex mx-auto justify-center items-center  ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="32" viewBox="0 0 15 32" fill="none">
                         <path d="M13.5001 0.999999L1.00006 16L13.5001 31" stroke="#D3AA65" stroke-width="1.5" />
                     </svg>
-                </button>
+                </button> */}
                 <Swiper
-                    className='container'
+                    className=''
                     spaceBetween={50}
                     slidesPerView={1}
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -106,11 +106,11 @@ function MainSlider() {
                     {/* <SwiperSlide className='h-[100vh] bg-[red]'>Slide 4</SwiperSlide> */}
 
                 </Swiper>
-                <button className="custom-next-button flex w-[5vw] mx-auto justify-center items-center">
+                {/* <button className="custom-next-button flex w-[5vw] mx-auto justify-center items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="32" viewBox="0 0 15 32" fill="none">
                         <path d="M0.849122 0.999999L13.3491 16L0.849121 31" stroke="#D3AA65" stroke-width="1.5" />
                     </svg>
-                </button>
+                </button> */}
             </div>
 
         </div>

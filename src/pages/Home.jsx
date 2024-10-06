@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {API_URL} from '../api/BrandApi'
-// import MainSlider from '../components/test/MainSlider'
+import MainSlider from '../components/test/MainSlider'
 import Categories from '../components/test/Categories';
 import Product from '../components/test/Product';
 const Home = () => {
@@ -17,7 +17,7 @@ const Home = () => {
           </div>
         </div> */}
         <div>HELLO</div>
-        {/* <MainSlider /> */}
+        <MainSlider />
             <Categories />
             <div className="grid grid-cols-4 mt-5 gap-3">
                     <Product/>

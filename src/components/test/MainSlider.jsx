@@ -4,21 +4,21 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/swiper-bundle.css'
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 // import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 // Install Swiper modules
-import image from '../../images/bina.png'
+import image from '../../images/man.png'
 import Divider from './Divider';
 function MainSlider() {
     // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
-    const { t, i18n: {changeLanguage, language} } = useTranslation();
-    const [currentLanguage, setCurrentLanguage] = useState(language)
-    const handleChangeLanguage = () => {
-     const newLanguage = currentLanguage === "en" ? "tk" : "en";
-     setCurrentLanguage(newLanguage);
-     changeLanguage(newLanguage);
-   }
+    // const { t, i18n: {changeLanguage, language} } = useTranslation();
+//     const [currentLanguage, setCurrentLanguage] = useState(language)
+//     const handleChangeLanguage = () => {
+//      const newLanguage = currentLanguage === "en" ? "tk" : "en";
+//      setCurrentLanguage(newLanguage);
+//      changeLanguage(newLanguage);
+//    }
     return (
         <div className='  mx-auto'>
             <div className=' flex justify-center items-center mx-auto  pt-10'>
@@ -40,16 +40,36 @@ function MainSlider() {
                         nextEl: '.custom-next-button',
                     }}
                 >
+                    <SwiperSlide className=' text-white'>
+                        <div className='flex w-full p-4 aspect-[9/4] bg-[#304D30]'>
+                            <div className='w-1/2 relative pe-5'>
+
+                                <div className='text-goldColor w-3/4  font-semibold text-[30px] capitalize '>
+                                {/* {t('presidentSpeech')} */} Hello
+                                </div>
+                                <div className='absolute bottom-4 flex items-end gap-5  right-5 left-0'>
+                                    <div className='wrap w-1/3 text-goldColor font-semibold text-xl'>
+                                        {/* {t('president')}   */} Hello
+                                    </div>
+                                    {/* <Divider showright={true} /> */}
+                                </div>
+                            </div>
+
+                            <div className='w-1/2 h-full'>
+                                <img src={image} className='object-cover w-full h-full' alt="" />
+                            </div>
+                        </div>
+                    </SwiperSlide>
                     <SwiperSlide className=''>
                         <div className='flex w-full p-4 aspect-[9/4] bg-[#F8F8F8]'>
                             <div className='w-1/2 relative pe-5'>
 
                                 <div className='text-goldColor w-3/4  font-semibold text-[30px] capitalize '>
-                                {t('presidentSpeech')}
+                                {/* {t('presidentSpeech')} */} Hello
                                 </div>
                                 <div className='absolute bottom-4 flex items-end gap-5  right-5 left-0'>
                                     <div className='wrap w-1/3 text-goldColor font-semibold text-xl'>
-                                        {t('president')}  
+                                        {/* {t('president')}       */} Hello
                                     </div>
                                     <Divider showright={true} />
                                 </div>
@@ -65,31 +85,11 @@ function MainSlider() {
                             <div className='w-1/2 relative pe-5'>
 
                                 <div className='text-goldColor w-3/4  font-semibold text-[30px] capitalize '>
-                                {t('presidentSpeech')}
+                                {/* {t('presidentSpeech')} */} Hello
                                 </div>
                                 <div className='absolute bottom-4 flex items-end gap-5  right-5 left-0'>
                                     <div className='wrap w-1/3 text-goldColor font-semibold text-xl'>
-                                        {t('president')}      
-                                    </div>
-                                    <Divider showright={true} />
-                                </div>
-                            </div>
-
-                            <div className='w-1/2 h-full'>
-                                <img src={image} className='object-cover w-full h-full' alt="" />
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide className=''>
-                        <div className='flex w-full p-4 aspect-[9/4] bg-[#F8F8F8]'>
-                            <div className='w-1/2 relative pe-5'>
-
-                                <div className='text-goldColor w-3/4  font-semibold text-[30px] capitalize '>
-                                {t('presidentSpeech')}
-                                </div>
-                                <div className='absolute bottom-4 flex items-end gap-5  right-5 left-0'>
-                                    <div className='wrap w-1/3 text-goldColor font-semibold text-xl'>
-                                        {t('president')}  
+                                        {/* {t('president')}   */} Hello
                                     </div>
                                     <Divider showright={true} />
                                 </div>

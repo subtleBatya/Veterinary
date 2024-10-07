@@ -1,89 +1,199 @@
-import React from 'react'
-
+import React from "react";
 
 function Footer() {
-    return (
-        <div className=' bg-blue-600 mt-20'>
-            <div className="container text-white py-10">
-                <div className="flex">
-                    <div className="w-3/5 flex align-middle items-center">
-                        <ul className='flex w-1/2 flex-col  items-left gap-3 font-semibold'>
-                            <li className='cursor-pointer text-left' >
-                                Baş sahypa
-                            </li>
-                            {/* <li className='cursor-pointer text-left'>
-                                Ýaşlar Syýasaty
-                            </li>
-                            <li className='cursor-pointer text-left'>
-                                Habarlar
-                            </li>
-                            <li className='cursor-pointer text-left'>
-                                Mümkinçilikler
-                            </li >
-                            <li className='cursor-pointer text-left'>
-                                Kitaphana
-                            </li>
-                            <li className='cursor-pointer text-left'>
-                                Medeniýet
-                            </li> */}
+  return (
+    <div className=" bg-blue-600 mt-20">
+      <div className="container-xl text-white py-10">
+        <div className="flex justify-between items-start">
+          <div className="p-5">
+            <h1 className="text-xl">Kontaktlar</h1>
+            <div className="flex justify-start items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="size-6"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                  clipRule="evenodd"
+                />
+              </svg>
 
-                        </ul>
-                        <ul className='flex w-1/2 flex-col gap-3 items-left  font-semibold'>
-                            <li className='cursor-pointer text-left' >
-                                Kitaphana
-                            </li>
-                            {/* <li className='cursor-pointer text-left'>
-                                Medeniýet
-                            </li>
-                            <li className='cursor-pointer text-left'>
-                                Sanly Ulgam
-                            </li>
-                            <li className='cursor-pointer text-left'>
-                                Biz Barada
-                            </li > */}
-                        </ul>
-                    </div>
-                    <div className="w-2/5">
-                        <div className="flex items-center align-middle justify-between ">
-                            <div className=" flex flex-col gap-3">
-                                <span className='text-[#FFFFFF]  opacity-50 text-xs'>Habarlaşmak Üçin</span>
-                                <div className='text-lg'>
-                                    +993 (63) 060606
-                                </div>
-                            </div>
-                            <div className=" flex flex-col text-right gap-3">
-                                <div className='text-left'>
-
-                                    <span className='text-[#FFFFFF]  opacity-50 text-xs'>Elektron Poçta</span>
-                                    <div className='text-lg'>
-                                        veterinary@tm.com
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* <div className='text-left flex flex-col gap-2 w-2/3 mt-20'>
-                            <span className='text-[#FFFFFF]  opacity-50 text-xs'>Bildirişlerden Habardar Bol</span>
-                            <div className='flex justify-center  bg-white  items-center'>
-                                <span className='text-[#C5C5C5] p-3 text-xs font-semibold'>Email</span>
-                                <input className='w-2/3 h-full outline-none text-xs text-darkColor' type="text" name="" id="" />
-                                <span className='text-primaryColor p-3 text-xs cursor-pointer font-semibold'>Goşul</span>
-                            </div>
-                        </div> */}
-                    </div>
-                </div>
-                <hr className='w-full border-[1px] my-10 border-white' />
-                <div className="flex text-sm ">
-                    <div className="w-1/4">
-                        <div>Weterinariya</div>
-                    </div>
-                    <div className="w-3/4 flex  justify-end ">
-                        
-                        <div>© 2024</div>
-                    </div>
-                </div>
+              <p className="px-2">Adress</p>
             </div>
+            <div className="flex justify-start items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="size-5"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+
+              <p className="px-2">
+                <a href="tel:+99360000000">+993600000</a>
+              </p>
+            </div>
+            <div className="flex justify-start items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="size-6"
+              >
+                <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+                <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+              </svg>
+              <p className="px-2">
+                <a href="mailto:emeil@gmail.com">emeil@gmail.com</a>
+              </p>
+            </div>
+          </div>
+          <div>
+            <h5 className="text-xl pb-2">Quick links</h5>
+            <p className="pb-2">
+              <a href="#">Home</a>
+            </p>
+            <p className="pb-2">
+              <a href="#">About</a>
+            </p>
+            <p className="pb-2">
+              <a href="#">Contact</a>
+            </p>
+          </div>
+          <div>
+            <h5 className="text-xl pb-2">Social medialar</h5>
+            <div className="flex justify-between items-center gap-4 mt-4">
+              <a href="http://">
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 41 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_1_8788)">
+                    <path
+                      d="M20.5 0C9.45312 0 0.5 8.95312 0.5 20C0.5 31.0469 9.45312 40 20.5 40C31.5469 40 40.5 31.0469 40.5 20C40.5 8.95312 31.5469 0 20.5 0ZM32.9844 32.4766C31.3594 34.1016 29.4766 35.375 27.375 36.2578C25.2031 37.1797 22.8906 37.6406 20.5 37.6406C18.1172 37.6406 15.8047 37.1719 13.625 36.2578C11.5234 35.3672 9.63281 34.0938 8.01562 32.4766C6.39062 30.8516 5.11719 28.9688 4.23438 26.8672C3.3125 24.6953 2.84375 22.3828 2.84375 20C2.84375 17.6172 3.3125 15.3047 4.22656 13.125C5.11719 11.0234 6.39062 9.13281 8.00781 7.51562C9.64062 5.89062 11.5234 4.61719 13.625 3.72656C15.8047 2.8125 18.1172 2.34375 20.5 2.34375C22.8828 2.34375 25.1953 2.8125 27.375 3.72656C29.4766 4.61719 31.3672 5.89063 32.9844 7.50781C34.6094 9.13281 35.8828 11.0156 36.7656 13.1172C37.6875 15.2891 38.1484 17.6016 38.1484 19.9922C38.1484 22.375 37.6797 24.6875 36.7656 26.8672C35.875 28.9688 34.6016 30.8594 32.9844 32.4766Z"
+                      fill="#E0EEF9"
+                    />
+                    <path
+                      d="M23.1406 13.1797C23.9453 13.1797 24.8047 13.4297 24.8047 13.4297L25.3203 10.3672C25.3203 10.3672 24.2266 9.99219 21.6172 9.99219C20.0156 9.99219 19.0859 10.6016 18.4062 11.5C17.7656 12.3516 17.7422 13.7188 17.7422 14.6016V16.6094H15.6719V19.6016H17.7422V29.9922H21.6172V19.6016H24.6875L24.9141 16.6094H21.6172V14.2734C21.6172 13.4688 22.3359 13.1797 23.1406 13.1797Z"
+                      fill="#E0EEF9"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1_8788">
+                      <rect
+                        width="40"
+                        height="40"
+                        fill="white"
+                        transform="translate(0.5)"
+                      />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+              <a href="http://">
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 41 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20.5 0C9.45312 0 0.5 8.95312 0.5 20C0.5 31.0469 9.45312 40 20.5 40C31.5469 40 40.5 31.0469 40.5 20C40.5 8.95312 31.5469 0 20.5 0ZM32.9844 32.4766C31.3594 34.1016 29.4766 35.375 27.375 36.2578C25.2031 37.1797 22.8906 37.6406 20.5 37.6406C18.1172 37.6406 15.8047 37.1719 13.625 36.2578C11.5234 35.3672 9.63281 34.0938 8.01562 32.4766C6.39062 30.8516 5.11719 28.9688 4.23438 26.8672C3.3125 24.6953 2.84375 22.3828 2.84375 20C2.84375 17.6172 3.3125 15.3047 4.22656 13.125C5.11719 11.0234 6.39062 9.13281 8.00781 7.51562C9.64062 5.89062 11.5234 4.61719 13.625 3.72656C15.8047 2.8125 18.1172 2.34375 20.5 2.34375C22.8828 2.34375 25.1953 2.8125 27.375 3.72656C29.4766 4.61719 31.3672 5.89063 32.9844 7.50781C34.6094 9.13281 35.8828 11.0156 36.7656 13.1172C37.6875 15.2891 38.1484 17.6016 38.1484 19.9922C38.1484 22.375 37.6797 24.6875 36.7656 26.8672C35.875 28.9688 34.6016 30.8594 32.9844 32.4766Z"
+                    fill="#E0EEF9"
+                  />
+                  <path
+                    d="M14.9062 15.8906H11.0078V28.3672H14.9062V15.8906Z"
+                    fill="#E0EEF9"
+                  />
+                  <path
+                    d="M12.875 10C11.4375 10 10.4922 10.9297 10.4922 12.1641C10.4922 13.375 11.4062 14.3281 12.8203 14.3281H12.8516C14.3203 14.3281 15.2344 13.3672 15.2266 12.1641C15.1953 10.9297 14.3125 10 12.875 10Z"
+                    fill="#E0EEF9"
+                  />
+                  <path
+                    d="M25.5547 15.7734C23.3203 15.7734 21.9219 16.9922 21.6641 17.8516V15.8906H17.2812C17.3359 16.9297 17.2812 28.3672 17.2812 28.3672H21.6641V21.625C21.6641 21.2422 21.6484 20.8672 21.7578 20.6016C22.0547 19.8516 22.7031 19.0703 23.8672 19.0703C25.3906 19.0703 26.0781 20.2266 26.0781 21.9141V28.3672H30.5V21.4297C30.5 17.5703 28.3281 15.7734 25.5547 15.7734Z"
+                    fill="#E0EEF9"
+                  />
+                </svg>
+              </a>
+              <a href="http://">
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 41 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_1_8798)">
+                    <path
+                      d="M20.5 0C9.45312 0 0.5 8.95312 0.5 20C0.5 31.0469 9.45312 40 20.5 40C31.5469 40 40.5 31.0469 40.5 20C40.5 8.95312 31.5469 0 20.5 0ZM32.9844 32.4766C31.3594 34.1016 29.4766 35.375 27.375 36.2578C25.2031 37.1797 22.8906 37.6406 20.5 37.6406C18.1172 37.6406 15.8047 37.1719 13.625 36.2578C11.5234 35.3672 9.63281 34.0938 8.01562 32.4766C6.39062 30.8516 5.11719 28.9688 4.23438 26.8672C3.3125 24.6953 2.84375 22.3828 2.84375 20C2.84375 17.6172 3.3125 15.3047 4.22656 13.125C5.11719 11.0234 6.39062 9.13281 8.00781 7.51562C9.64062 5.89062 11.5234 4.61719 13.625 3.72656C15.8047 2.8125 18.1172 2.34375 20.5 2.34375C22.8828 2.34375 25.1953 2.8125 27.375 3.72656C29.4766 4.61719 31.3672 5.89063 32.9844 7.50781C34.6094 9.13281 35.8828 11.0156 36.7656 13.1172C37.6875 15.2891 38.1484 17.6016 38.1484 19.9922C38.1484 22.375 37.6797 24.6875 36.7656 26.8672C35.875 28.9688 34.6016 30.8594 32.9844 32.4766Z"
+                      fill="#E0EEF9"
+                    />
+                    <path
+                      d="M26.6406 10H14.375C12.2422 10 10.5078 11.7344 10.5078 13.8672V17.9531V26.1406C10.5078 28.2734 12.2422 30.0078 14.375 30.0078H26.6406C28.7734 30.0078 30.5078 28.2734 30.5078 26.1406V17.9453V13.8594C30.5 11.7344 28.7656 10 26.6406 10ZM27.75 12.3047H28.1953V12.7422V15.6953L24.8125 15.7031L24.8047 12.3125L27.75 12.3047ZM17.6484 17.9453C18.2891 17.0625 19.3281 16.4766 20.5 16.4766C21.6719 16.4766 22.7109 17.0547 23.3516 17.9453C23.7734 18.5234 24.0156 19.2344 24.0156 20C24.0156 21.9375 22.4375 23.5234 20.4922 23.5234C18.5469 23.5234 16.9844 21.9375 16.9844 20C16.9844 19.2344 17.2344 18.5234 17.6484 17.9453ZM28.5547 26.1328C28.5547 27.1875 27.6953 28.0469 26.6406 28.0469H14.375C13.3203 28.0469 12.4609 27.1875 12.4609 26.1328V17.9453H15.4453C15.1875 18.5781 15.0391 19.2734 15.0391 20C15.0391 23.0156 17.4922 25.4688 20.5078 25.4688C23.5234 25.4688 25.9766 23.0156 25.9766 20C25.9766 19.2734 25.8281 18.5781 25.5703 17.9453H28.5547V26.1328Z"
+                      fill="#E0EEF9"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1_8798">
+                      <rect
+                        width="40"
+                        height="40"
+                        fill="white"
+                        transform="translate(0.5)"
+                      />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+              <a href="http://">
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 41 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_1_8802)">
+                    <path
+                      d="M20.5 0C9.45312 0 0.5 8.95312 0.5 20C0.5 31.0469 9.45312 40 20.5 40C31.5469 40 40.5 31.0469 40.5 20C40.5 8.95312 31.5469 0 20.5 0ZM32.9844 32.4766C31.3594 34.1016 29.4766 35.375 27.375 36.2578C25.2031 37.1797 22.8906 37.6406 20.5 37.6406C18.1172 37.6406 15.8047 37.1719 13.625 36.2578C11.5234 35.3672 9.63281 34.0938 8.01562 32.4766C6.39062 30.8516 5.11719 28.9688 4.23438 26.8672C3.3125 24.6953 2.84375 22.3828 2.84375 20C2.84375 17.6172 3.3125 15.3047 4.22656 13.125C5.11719 11.0234 6.39062 9.13281 8.00781 7.51562C9.64062 5.89062 11.5234 4.61719 13.625 3.72656C15.8047 2.8125 18.1172 2.34375 20.5 2.34375C22.8828 2.34375 25.1953 2.8125 27.375 3.72656C29.4766 4.61719 31.3672 5.89063 32.9844 7.50781C34.6094 9.13281 35.8828 11.0156 36.7656 13.1172C37.6875 15.2891 38.1484 17.6016 38.1484 19.9922C38.1484 22.375 37.6797 24.6875 36.7656 26.8672C35.875 28.9688 34.6016 30.8594 32.9844 32.4766Z"
+                      fill="#E0EEF9"
+                    />
+                    <path
+                      d="M27.0547 12.9844H13.9453C13.9453 12.9844 10.5 12.9844 10.5 16.4297V23.5781C10.5 23.5781 10.5 27.0234 13.9453 27.0234H27.0547C27.0547 27.0234 30.5 27.0234 30.5 23.5781V16.4297C30.5 16.4297 30.5 12.9844 27.0547 12.9844ZM17.8359 23.8516V16.1562L24.3828 20.0078L17.8359 23.8516Z"
+                      fill="#E0EEF9"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1_8802">
+                      <rect
+                        width="40"
+                        height="40"
+                        fill="white"
+                        transform="translate(0.5)"
+                      />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
-    )
+        <hr className="w-full border-[1px] my-10 border-white" />
+      </div>
+    </div>
+  );
 }
 
-export default Footer
+export default Footer;

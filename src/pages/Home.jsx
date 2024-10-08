@@ -1,48 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import {API_URL} from '../api/BrandApi'
-import MainSlider from '../components/test/MainSlider'
-import Categories from '../components/test/Categories';
-import Product from '../components/test/Product';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { API_URL } from "../api/BrandApi";
+import MainSlider from "../components/test/MainSlider";
+import Categories from "../components/test/Categories";
+import Product from "../components/test/Product";
 const Home = () => {
-  
-
   return (
-    <div className='esas_bg'>
-      <div className=' '>
-        {/* <div className="flex justify-between items-center">
-          <div>
-            <img src="" alt="" />
-          </div>
-        </div> */}
-        <div>HELLO</div>
-        <MainSlider />
-            <Categories />
-            <div className="esas_container grid grid-cols-4 mt-5 gap-3">
-                    <Product/>
-                    <Product/>
-                    <Product/>
-                    <Product/>
-            </div>
-            <div>
-                <div>
-                    <h1>HEllo</h1>
-                    <h4>HELO</h4>
-                </div>
-            </div>
-            <div className="mb-[1000px]"></div>
-
-
+    <div className="bg-white">
+      <hr className="w-[970px] mt-2" />
+      <div className="container-xl px-2">
+        <div className="grid grid-cols-12 justify-between items-center pl-2 py-2">
+          <span className="text-lg text-center">ferfe</span>
+          <span className="text-lg text-center">ferfe</span>
+          <span className="text-lg text-center">ferfe</span>
+          <span className="text-lg text-center">ferfe</span>
+          <span className="text-lg text-center">ferfe</span>
+          <span className="text-lg text-center">ferfe</span>
+        </div>
       </div>
-      
+      <MainSlider />
+      <Categories />
+      <div className="esas_container grid grid-cols-4 mt-5 gap-3">
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+      </div>
+      <div>
+        <div>
+          <h1>HEllo</h1>
+          <h4>HELO</h4>
+        </div>
+      </div>
+      <div className="mb-[1000px]"></div>
     </div>
   );
 };
 
 export default Home;
-
-
 
 // // src/components/BrandList.js
 // import React, { useEffect, useState } from 'react';

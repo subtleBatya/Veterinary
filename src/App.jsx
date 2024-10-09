@@ -9,6 +9,7 @@ import NotFound from './pages/NotFound';
 import Navbar from './components/navbar/Navbar'
 import Footer from './pages/Footer'
 import ProductList from './pages/admin/products/ProductList';
+import Register from './components/Register';
 import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminHome from './pages/AdminHome'
@@ -44,6 +45,7 @@ function App() {
    <Routes>
     <Route path="Veterinary/" exact element={<Home />} />
     <Route path="Veterinary/admin"  element={<AdminHome />} />
+    <Route path="Veterinary/register" element={<Register />} />
     <Route path="Veterinary/login" element={<Login />} />
     <Route path="Veterinary/categories" element={<CategoryList />} />
     <Route path="Veterinary/brands" element={<BrandList />} />

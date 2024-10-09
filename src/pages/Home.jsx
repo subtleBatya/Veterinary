@@ -9,26 +9,35 @@ const Home = () => {
   
 
   return (
-    <div className='esas_bg'>
-      <div className=' '>
+    <div className=''>
+      <div className='esas_bg '>
         {/* <div className="flex justify-between items-center">
           <div>
             <img src="" alt="" />
           </div>
         </div> */}
-        <div>HELLO</div>
-        <MainSlider />
+        
+            <MainSlider />
             <Categories />
-            <div className="esas_container grid grid-cols-4 mt-5 gap-3">
-                    <Product/>
-                    <Product/>
-                    <Product/>
-                    <Product/>
+            <div className="esas_container mt-5 space-y-4">
+                <div className="flex mx-auto justify-between items-center">
+                    <div className="h3">Taze harytlar</div>
+                    <div className=" text-green-600">Doly gormek</div>
+                </div>
+                <div className="grid grid-cols-4 sm: grid-cols-1 gap-3">
+                        <Product/>
+                        <Product/>
+                        <Product/>
+                        <Product/>
+                </div>
             </div>
+           
             <div>
                 <div>
                     <h1>HEllo</h1>
                     <h4>HELO</h4>
+                    
+                   
                 </div>
             </div>
             <div className="mb-[1000px]"></div>

@@ -21,7 +21,7 @@ function MainSlider() {
 //    }
     return (
         <div className='  '>
-            <div className=' flex justify-center items-center pt-10'>
+            <div className=' flex justify-center items-center'>
             {/* <button className="custom-prev-button w-[5vw] flex mx-auto justify-center items-center  ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="32" viewBox="0 0 15 32" fill="none">
                         <path d="M13.5001 0.999999L1.00006 16L13.5001 31" stroke="#D3AA65" stroke-width="1.5" />
@@ -41,7 +41,7 @@ function MainSlider() {
                     }}
                 >
                     <SwiperSlide className=' text-white'>
-                        <div className='flex w-full  aspect-[9/4] bg-[#304D30]'>
+                        <div className='flex w-full  aspect-[9/4] '>
                             <div className='w-1/2 relative pe-5'>
 
                                 <div className='text-goldColor w-3/4  font-semibold text-[30px] capitalize '>
@@ -56,7 +56,7 @@ function MainSlider() {
                             </div>
 
                             <div className='w-1/2 h-full'>
-                                <img src={image} className='object-cover w-full h-full' alt="" />
+                                {/* <img src={image} className='object-cover w-full h-full' alt="" /> */}
                             </div>
                         </div>
                     </SwiperSlide>

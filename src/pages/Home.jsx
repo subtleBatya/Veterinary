@@ -11,12 +11,12 @@ const Home = () => {
       <hr className="w-[970px] mt-2" />
       <div className="container-xl px-2">
         <div className="grid grid-cols-12 justify-between items-center pl-2 py-2">
-          <span className="text-lg text-center">ferfe</span>
-          <span className="text-lg text-center">ferfe</span>
-          <span className="text-lg text-center">ferfe</span>
-          <span className="text-lg text-center">ferfe</span>
-          <span className="text-lg text-center">ferfe</span>
-          <span className="text-lg text-center">ferfe</span>
+          <a href="" className="text-lg text-center">kenkenk</a>
+          <a href="" className="text-lg text-center">kenkenk</a>
+          <a href="" className="text-lg text-center">kenkenk</a>
+          <a href="" className="text-lg text-center">kenkenk</a>
+          <a href="" className="text-lg text-center">kenkenk</a>
+          <a href="" className="text-lg text-center">kenkenk</a>
         </div>
       </div>
       <MainSlider />

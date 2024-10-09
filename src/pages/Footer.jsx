@@ -5,7 +5,7 @@ function Footer() {
     <div className=" bg-blue-600 mt-20">
       <div className="container-xl text-white py-10">
         <div className="flex justify-between items-start">
-          <div className="p-5">
+          <div className="">
             <h1 className="text-xl">Kontaktlar</h1>
             <div className="flex justify-start items-center">
               <svg
@@ -21,7 +21,7 @@ function Footer() {
                 />
               </svg>
 
-              <p className="px-2">Adress</p>
+              <p className="px-2 pb-2">Adress</p>
             </div>
             <div className="flex justify-start items-center">
               <svg
@@ -37,7 +37,7 @@ function Footer() {
                 />
               </svg>
 
-              <p className="px-2">
+              <p className="px-2 pb-2">
                 <a href="tel:+99360000000">+993600000</a>
               </p>
             </div>
@@ -51,7 +51,7 @@ function Footer() {
                 <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
                 <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
               </svg>
-              <p className="px-2">
+              <p className="px-2 pb-2">
                 <a href="mailto:emeil@gmail.com">emeil@gmail.com</a>
               </p>
             </div>

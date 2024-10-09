@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import {API_URL} from '../api/BrandApi'
-import MainSlider from '../components/test/MainSlider'
-import Categories from '../components/test/Categories';
-import Product from '../components/test/Product';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { API_URL } from "../api/BrandApi";
+import MainSlider from "../components/test/MainSlider";
+import Categories from "../components/test/Categories";
+import Product from "../components/test/Product";
 const Home = () => {
-  
-
   return (
     <div className=''>
       <div className='esas_bg '>
@@ -44,14 +42,26 @@ const Home = () => {
 
 
       </div>
-      
+      <MainSlider />
+      <Categories />
+      <div className="esas_container grid grid-cols-4 mt-5 gap-3">
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+      </div>
+      <div>
+        <div>
+          <h1>HEllo</h1>
+          <h4>HELO</h4>
+        </div>
+      </div>
+      <div className="mb-[1000px]"></div>
     </div>
   );
 };
 
 export default Home;
-
-
 
 // // src/components/BrandList.js
 // import React, { useEffect, useState } from 'react';

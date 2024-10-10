@@ -17,7 +17,7 @@ const Login = () => {
       const resultAction = await dispatch(login({ username, password }));
       if (login.fulfilled.match(resultAction)) {
         console.log('Login successful, navigating to /contact');
-        navigate('/Veterinary/admin/products');
+        navigate('/Veterinary/admin/');
       }
     } catch (error) {
       console.error('Failed to log in:', error);

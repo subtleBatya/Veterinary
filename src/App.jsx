@@ -44,23 +44,59 @@ function App() {
     {/* {isAdmin ? <AdminHome /> : <Login />} */}
    <Routes>
     <Route path="Veterinary/" exact element={<Home />} />
-    <Route path="Veterinary/admin"  element={<AdminHome />} />
+    
+    <Route path="Veterinary/admin"  element={
+    <ProtectedRoute>
+      <AdminHome />
+    </ProtectedRoute>
+    } />
     <Route path="Veterinary/register" element={<Register />} />
     <Route path="Veterinary/login" element={<Login />} />
-    <Route path="Veterinary/admin/categories" element={<CategoryList />} />
-    <Route path="Veterinary/admin/brands" element={<BrandList />} />
+    
+    <Route path="Veterinary/admin/categories" element={
+    <ProtectedRoute>
+      <CategoryList />
+    </ProtectedRoute>
+   } />
+    
+    <Route path="Veterinary/admin/brands" element={
+    <ProtectedRoute>
+      <BrandList />
+    </ProtectedRoute>
+    } />
+
     <Route path="Veterinary/admin/products"  element={
     <ProtectedRoute>
       <ProductList />
     </ProtectedRoute>
     } />
     <Route path="Veterinary/contact"  element={<Contact />} />
-    <Route path="Veterinary/admin/products/create"  element={<CreateProduct />} />
-    <Route path="Veterinary/admin/products/edit/:id"  element={<EditProduct />} />
-    <Route path="Veterinary/admin/brands/create"  element={<CreateBrand />} />
-    <Route path="Veterinary/admin/brands/:id/edit"  element={<EditBrand />} />
-    <Route path="Veterinary/admin/categories/create"  element={<CreateCategory />} />
-    <Route path="Veterinary/admin/categories/:id/edit"  element={<EditCategory />} />
+    <Route path="Veterinary/admin/products/create"  element={
+    <ProtectedRoute>
+      <CreateProduct />
+    </ProtectedRoute>
+    } />
+    <Route path="Veterinary/admin/products/edit/:id"  element={
+    <ProtectedRoute>
+      <EditProduct />
+    </ProtectedRoute> 
+    } />
+    <Route path="Veterinary/admin/brands/create"  element={
+    <ProtectedRoute>
+      <CreateBrand />
+    </ProtectedRoute>} />
+    <Route path="Veterinary/admin/brands/:id/edit"  element={
+    <ProtectedRoute>
+      <EditBrand />
+    </ProtectedRoute>} />
+    <Route path="Veterinary/admin/categories/create"  element={
+    <ProtectedRoute>
+      <CreateCategory />
+    </ProtectedRoute>} />
+    <Route path="Veterinary/admin/categories/:id/edit"  element={
+    <ProtectedRoute>
+      <EditCategory />
+    </ProtectedRoute>} />
     <Route path="*"  element={<NotFound />} />
    </Routes>
       <Footer />

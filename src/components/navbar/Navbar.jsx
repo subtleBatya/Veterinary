@@ -47,9 +47,6 @@
 // export default Navbar
 
 import React, { useState } from "react";
-<<<<<<< HEAD
-import { Link } from "react-router-dom";
-=======
 import {
   Disclosure,
   DisclosureButton,
@@ -64,7 +61,6 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
->>>>>>> 4a325b03d0a42808d29f29235d8965557dbfb37c
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -331,142 +327,7 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-<<<<<<< HEAD
-
-          {/* Иконки */}
-          <div className="flex items-center space-x-6">
-            <button className="text-gray-500 hover:text-gray-700 hidden md:inline-flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-                />
-              </svg>
-            </button>
-            <div className="relative inline-block text-left">
-              <div>
-                <button
-                  type="button"
-                  className="inline-flex justify-start items-center w-full rounded-md px-4 py-2 bg-white text-sm font-medium text-gray-700"
-                  id="menu-button"
-                  aria-expanded={isOpen}
-                  aria-haspopup="true"
-                  onClick={toggleMenu}
-                >
-                  <img
-                    src="vite.svg"
-                    alt=""
-                    className="size-9 hidden md:block"
-                  />
-                  <svg
-                    className="-mr-1 ml-2 h-5 w-5 hidden md:block"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              {isOpen && (
-                <div
-                  className="hidden md:block origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
-                  role="menu"
-                  aria-orientation="vertical"
-                  aria-labelledby="menu-button"
-                  tabIndex="-1"
-                >
-                  <div className="py-1" role="none">
-                  <div className="flex items-center justify-start ps-4">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="size-5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                        />
-                      </svg>
-                      <Link
-                        to="/Veterinary/register"
-                    
-                       
-                      >
-                         Register
-                      </Link>
-                    </div>
-                    <div className="flex items-center justify-start ps-4">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="size-5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                        />
-                      </svg>
-                      <a
-                        href="#"
-                        className="text-gray-700 block px-2 py-2 text-sm"
-                        role="menuitem"
-                        tabIndex="-1"
-                        id="menu-item-0"
-                      >
-                        Profile
-                      </a>
-                    </div>
-                    <div className="flex items-center justify-start ps-4">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="size-5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
-                        />
-                      </svg>
-                      <button className="text-gray-700 block px-2 py-2 text-sm">
-                        Logout
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Кнопка-бургер для мобильных */}
-=======
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
->>>>>>> 4a325b03d0a42808d29f29235d8965557dbfb37c
             <button
               type="button"
               className="relative rounded-full p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"

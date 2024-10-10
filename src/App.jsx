@@ -37,8 +37,8 @@ function App() {
   return (
     <>
     
-   {/* <Register /> */}
-   {/* <Login />  */}
+   {/* <Register />
+   <Login />  */}
    
    <Navbar />
     {/* {isAdmin ? <AdminHome /> : <Login />} */}
@@ -47,8 +47,8 @@ function App() {
     <Route path="Veterinary/admin"  element={<AdminHome />} />
     <Route path="Veterinary/register" element={<Register />} />
     <Route path="Veterinary/login" element={<Login />} />
-    <Route path="Veterinary/categories" element={<CategoryList />} />
-    <Route path="Veterinary/brands" element={<BrandList />} />
+    <Route path="Veterinary/admin/categories" element={<CategoryList />} />
+    <Route path="Veterinary/admin/brands" element={<BrandList />} />
     <Route path="Veterinary/admin/products"  element={
     <ProtectedRoute>
       <ProductList />
@@ -57,10 +57,10 @@ function App() {
     <Route path="Veterinary/contact"  element={<Contact />} />
     <Route path="Veterinary/admin/products/create"  element={<CreateProduct />} />
     <Route path="Veterinary/admin/products/edit/:id"  element={<EditProduct />} />
-    <Route path="Veterinary/brands/create"  element={<CreateBrand />} />
-    <Route path="Veterinary/brands/:id/edit"  element={<EditBrand />} />
-    <Route path="Veterinary/categories/create"  element={<CreateCategory />} />
-    <Route path="Veterinary/categories/:id/edit"  element={<EditCategory />} />
+    <Route path="Veterinary/admin/brands/create"  element={<CreateBrand />} />
+    <Route path="Veterinary/admin/brands/:id/edit"  element={<EditBrand />} />
+    <Route path="Veterinary/admin/categories/create"  element={<CreateCategory />} />
+    <Route path="Veterinary/admin/categories/:id/edit"  element={<EditCategory />} />
     <Route path="*"  element={<NotFound />} />
    </Routes>
       <Footer />

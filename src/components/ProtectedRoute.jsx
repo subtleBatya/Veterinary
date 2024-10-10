@@ -21,7 +21,7 @@ const ProtectedRoute = ({children}) => {
   }
 
   if(!accessToken || !isAdmin) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/Veterinary/login" />;
   }
   return children;
 };

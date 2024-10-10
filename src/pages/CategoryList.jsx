@@ -32,7 +32,7 @@ const CategoryList = () => {
   return (
     <div>
       <h1>Categories</h1>
-      <div className="btn"><Link to="/categories/create">Create Category</Link></div>
+      <div className="btn"><Link to="/Veterinary/admin/categories/create">Create Category</Link></div>
       {/* <CreateBrand /> */}
       <table className="table">
                 <thead>
@@ -60,7 +60,7 @@ const CategoryList = () => {
                                     
                                     
                                     <td style={{width: "10px", whiteSpace: "nowrap" }}>
-                                        <Link className="btn btn-primary btn-sm me-1" to={"/categories/" + category._id + "/edit"  }>Edit</Link>
+                                        <Link className="btn btn-primary btn-sm me-1" to={"/Veterinary/admin/categories/" + category._id + "/edit"  }>Edit</Link>
                                         <button onClick={() => deleteCategory(category._id)} type="button"  className="btn btn-danger btn-sm">Delete</button>
                                     </td>
                                 </tr>

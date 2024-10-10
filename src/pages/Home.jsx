@@ -18,10 +18,10 @@ const Home = () => {
         </div> */}
         
             <MainSlider />
-            <Categories />
+            {/* <Categories /> */}
             <div className="esas_container mt-5 space-y-4">
                 <div className="flex  mx-auto justify-between items-center">
-                    <div className="h3">Taze harytlar</div>
+                    <div className="h3">Su tayda  bir Category goymaly</div>
                     <div className=" text-green-600">Doly gormek</div>
                 </div>
                 <div className="grid grid-cols-4    gap-3">
@@ -33,7 +33,7 @@ const Home = () => {
             </div>
             <div className="esas_container mt-5 space-y-4">
                 <div className="flex  mx-auto justify-between items-center">
-                    <div className="h3">Meshur harytlar</div>
+                    <div className="h3">Su tayda  bir Category goymaly</div>
                     <div className=" text-green-600">Doly gormek</div>
                 </div>
                 <div className="grid grid-cols-4    gap-3">
@@ -43,27 +43,42 @@ const Home = () => {
                         <FamousPrd/>
                 </div>
             </div>
-            <div className="esas_container flex  aspect-4/5">
-                <div className=" w-3/5 h-full bg-blue-200/50  items-center">
-                <SalePrd />
+
+            <div className="esas_container mt-5 space-y-4">
+                <div className="flex  mx-auto justify-between items-center">
+                    <div className="h3">Su tayda  bir Category goymaly</div>
+                    <div className=" text-green-600">Doly gormek</div>
                 </div>
-                <div className=" col-span-6 w-1/2">
-                    
-                        <div className="  p-3 col  bg-yellow-200/50 "><SalePrd /></div>
-                        <div className="  p-3 col bg-green-200/50 "><SalePrd /></div>
-                    
-                    
+                <div className="grid grid-cols-4    gap-3">
+                        <FamousPrd/>
+                        <FamousPrd/>
+                        <FamousPrd/>
+                        <FamousPrd/>
+                </div>
+            </div>
+
+            <div className="esas_container mt-5 space-y-4">
+                <div className="flex  mx-auto justify-between items-center">
+                    <div className="h3">Su tayda  bir Category goymaly</div>
+                    <div className=" text-green-600">Doly gormek</div>
+                </div>
+                <div className="grid grid-cols-4    gap-3">
+                        <FamousPrd/>
+                        <FamousPrd/>
+                        <FamousPrd/>
+                        <FamousPrd/>
+                </div>
+            </div>
+
+
+            {/* <div className="esas_container flex ">
+                <div className=" w-full">
+                {/* <SalePrd /> 
                 </div>
                 
-            </div>
-            <div>
-                <div>
-                    <h1>HEllo</h1>
-                    <h4>HELO</h4>
-                    
-                   
-                </div>
-            </div>
+                
+            </div> */}
+            
             <div className="mb-[1000px]"></div>
 
 

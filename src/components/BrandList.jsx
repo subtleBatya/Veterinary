@@ -32,7 +32,7 @@ const BrandList = () => {
   return (
     <div>
       <h1>Brands</h1>
-      <div className="btn"><Link to="/brands/create">Create Brand</Link></div>
+      <div className="btn"><Link to="/Veterinary/admin/brands/create">Create Brand</Link></div>
       {/* <CreateBrand /> */}
       <table className="table">
                 <thead>
@@ -60,7 +60,7 @@ const BrandList = () => {
                                     
                                     
                                     <td style={{width: "10px", whiteSpace: "nowrap" }}>
-                                        <Link className="btn btn-primary btn-sm me-1" to={"/brands/" + brand._id + "/edit"  }>Edit</Link>
+                                        <Link className="btn btn-primary btn-sm me-1" to={"/Veterinary/admin/brands/" + brand._id + "/edit"  }>Edit</Link>
                                         <button onClick={() => deleteBrand(brand._id)} type="button"  className="btn btn-danger btn-sm">Delete</button>
                                     </td>
                                 </tr>

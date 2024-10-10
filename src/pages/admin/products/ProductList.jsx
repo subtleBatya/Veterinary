@@ -42,7 +42,7 @@ export default function ProductList() {
             
             <div className="row mb-3">
                 <div className="col">
-                    <Link className="btn btn-primary me-1" to="/admin/products/create">Create Product</Link>
+                    <Link className="btn btn-primary me-1" to="/Veterinary/admin/products/create">Create Product</Link>
                     <button type="button" className="btn btn-outline-primary"
                     onClick={() => getProducts()}>Refresh</button>
                     <button onClick={handleLogout}>Logout</button>
@@ -74,8 +74,8 @@ export default function ProductList() {
                                 <tr key={index}>
                                     <td>{product.name}</td>
                                     <td>{product._id}</td>
-                                    <td>{product.brand}</td>
-                                    <td>{product.category}</td>
+                                    <td>{product.brand_id?.name}</td>
+                                    <td>{product.category_id?.name}</td>
                                     <td>{product.price}</td>
                                     
                                     <td>
@@ -87,7 +87,7 @@ export default function ProductList() {
                                     </td>
                                     <td>{product.createdAt}</td>
                                     <td style={{width: "10px", whiteSpace: "nowrap" }}>
-                                        <Link className="btn btn-primary btn-sm me-1" to={"/admin/products/edit/" + product._id}>Edit</Link>
+                                        <Link className="btn btn-primary btn-sm me-1" to={"/Veterinary/admin/products/edit/" + product._id}>Edit</Link>
                                         <button onClick={() => deleteProduct(product._id)} type="button" className="btn btn-danger btn-sm">Delete</button>
                                     </td>
                                 </tr>

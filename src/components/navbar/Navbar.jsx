@@ -47,6 +47,7 @@
 // export default Navbar
 
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   Disclosure,
   DisclosureButton,
@@ -57,13 +58,21 @@ import {
   MenuItems,
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { logout } from "../../store/AuthSlice";
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  
+  const dispatch = useDispatch();
 
+  const handleLogout = () => {
+      dispatch(logout());
+  };
   // const toggleMenu = () => {
   //   setIsOpen(!isOpen);
   // };
@@ -385,12 +394,13 @@ const Navbar = () => {
                   </a>
                 </MenuItem>
                 <MenuItem>
-                  <a
-                    href="#"
+                  <div
+                    onClick={handleLogout}
+                    
                     className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                   >
                     Sign out
-                  </a>
+                  </div>
                 </MenuItem>
               </MenuItems>
             </Menu>

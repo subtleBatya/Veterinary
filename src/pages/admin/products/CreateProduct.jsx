@@ -9,39 +9,67 @@ import axios from 'axios';
 const CreateProduct = () => {
   const navigate = useNavigate()
   const [brands, setBrands] = useState([]);
-    useEffect(() => {
-        const fetchBrands = async () => {
-          try {
-            const response = await axios.get(`${API_URL}/products`);
-            setBrands(response.data);
-          } catch (error) {
-            console.error('Error fetching Cats:', error);
-          }
-        };
+  const [cats, setCats] = useState([]);
+  const [subCats, setSubCats] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const brandsResponse = await axios.get(`${API_URL}/brands`);
+        setBrands(brandsResponse.data);
+  
+        const categoriesResponse = await axios.get(`${API_URL}/categories`);
+        setCats(categoriesResponse.data);
+
+        const subsResponse = await axios.get(`${API_URL}/subCategories`);
+        setSubCats(subsResponse.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    fetchData();
+  }, []);
+  
+    // useEffect(() => {
+    //     const fetchBrands = async () => {
+    //       try {
+    //         const response = await axios.get(`${API_URL}/brands`);
+    //         setBrands(response.data);
+    //       } catch (error) {
+    //         console.error('Error fetching Cats:', error);
+    //       }
+    //     };
     
-        fetchBrands();
-      }, []);
+    //     fetchBrands();
+    //   }, []);
   
 
-  const [cats, setCats] = useState([]);
-    useEffect(() => {
-        const fetchCats = async () => {
-          try {
-            const response = await axios.get(`${API_URL}/categories`);
-            setCats(response.data);
-          } catch (error) {
-            console.error('Error fetching Cats:', error);
-          }
-        };
+
+    // useEffect(() => {
+    //     const fetchCats = async () => {
+    //       try {
+    //         const response = await axios.get(`${API_URL}/categories`);
+    //         setCats(response.data);
+    //       } catch (error) {
+    //         console.error('Error fetching Cats:', error);
+    //       }
+    //     };
     
-        fetchCats();
-      }, []);
+    //     fetchCats();
+    //   }, []);
 
   const [productData, setProductData] = useState({
     name: '',
+    name_ru: '',
+    name_en: '',
     price: '',
     description: '',
+    description_ru: '',
+    description_en: '',
+    brand: '',
     category: '',
+    subcategory: '',
     image: null,
   });
 
@@ -64,9 +92,15 @@ const CreateProduct = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('name', productData.name);
+    formData.append('name_ru', productData.name_ru);
+    formData.append('name_en', productData.name_en);
     formData.append('price', productData.price);
     formData.append('description', productData.description);
-    formData.append('category', productData.category);
+    formData.append('description_ru', productData.description_ru);
+    formData.append('description_en', productData.description_en);
+    formData.append('category_id', productData.category);
+    formData.append('subCategory_id', productData.subcategory);
+    formData.append('brand_id', productData.brand);
     if (productData.image) {
       formData.append('product-photo', productData.image);
     }
@@ -78,11 +112,17 @@ const CreateProduct = () => {
         },
       });
       console.log('Product created successfully:', response.data);
-      navigate("/admin/products")
+      navigate("/Veterinary/admin/products")
       // Optionally, redirect to products page or clear the form
     } catch (error) {
-      console.error('Error creating product:',
-      error.response?.data || error.message);
+      if (error.response) {
+        console.error('Server responded with an error:', error.response.data);
+        alert('Error: ' + error.response.data.message);
+      } else {
+        console.error('Error creating product:', error.message);
+        alert('Yalnyslyk doredi: Harydy doredip bilenok');
+      }
+      
     }
   };
 
@@ -105,6 +145,34 @@ const CreateProduct = () => {
                       name="name"
                       placeholder="Product Name"
                       value={productData.name}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  {/* For Name Input RU */}
+                  <div className='   justify-center  '>
+                    <label className=' text-center text-lg me-2'>Name_ru</label>
+                    <input
+                    className=' border-none blue'
+                      type="text"
+                      name="name_ru"
+                      placeholder="Product Name"
+                      value={productData.name_ru}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  {/* For Name Input EN */}
+                  <div className='   justify-center  '>
+                    <label className=' text-center text-lg me-2'>Name_en</label>
+                    <input
+                    className=' border-none blue'
+                      type="text"
+                      name="name_en"
+                      placeholder="Product Name"
+                      value={productData.name_en}
                       onChange={handleChange}
                       required
                     />
@@ -151,6 +219,35 @@ const CreateProduct = () => {
                   ></textarea>
                   </div>    
 
+                   {/* For Description RU*/}
+
+                   <div className=' justify-center  '>
+                    <label className=' text-center text-lg col-span-6'>Description</label>
+                    <textarea
+                    className='  outline-blue-500'
+                    name="description_ru"
+                    placeholder="Description_ru"
+                    value={productData.description_ru}
+                    onChange={handleChange}
+                    required
+                  ></textarea>
+                  </div>  
+
+
+                   {/* For Description EN*/}
+
+                   <div className=' justify-center  '>
+                    <label className=' text-center text-lg col-span-6'>Description</label>
+                    <textarea
+                    className='  outline-blue-500'
+                    name="description_en"
+                    placeholder="Description_en"
+                    value={productData.description_en}
+                    onChange={handleChange}
+                    required
+                  ></textarea>
+                  </div>   
+
                   {/* For Category */}
                   
                   <div className='   '>
@@ -165,9 +262,23 @@ const CreateProduct = () => {
                     </select>
                   </div>
 
-                  {/* For Image */}
-
+                  {/* For SubCategory */}
+                  
                   <div className='   '>
+                    <label className=' text-center text-lg col-span-6'>Subcategory</label>
+                    <select name="subcategory" value={productData.subcategory} onChange={handleChange} required>
+                        <option value="" disabled>Select a subcategory</option>
+                        {subCats.map((subCat) => (
+                        <option key={subCat._id} value={subCat._id}>
+                            {subCat.name}
+                        </option>
+                        ))}
+                    </select>
+                  </div>
+
+                 {/* For Image */}
+
+                   <div className='   '>
                     <label className=' text-center text-lg col-span-6'>Image</label>
                     <input
                     className=' col-span-5 border-none blue'

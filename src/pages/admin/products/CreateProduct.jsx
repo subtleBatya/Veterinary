@@ -21,7 +21,7 @@ const CreateProduct = () => {
         const categoriesResponse = await axios.get(`${API_URL}/categories`);
         setCats(categoriesResponse.data);
 
-        const subsResponse = await axios.get(`${API_URL}/subCategories`);
+        const subsResponse = await axios.get(`${API_URL}/subcategories`);
         setSubCats(subsResponse.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -69,16 +69,36 @@ const CreateProduct = () => {
     description_en: '',
     brand: '',
     category: '',
-    subcategory: '',
+    subcategory: [],
     image: null,
   });
 
+  // const handleChange = (e) => {
+  //   setProductData({
+  //     ...productData,
+  //     [e.target.name]: e.target.value,
+
+  //   });
+  // };
+
   const handleChange = (e) => {
-    setProductData({
-      ...productData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value, type, selectedOptions } = e.target;
+  
+    if (type === 'select-multiple') {
+      // Handle multiple selections for subcategories
+      const selectedValues = Array.from(selectedOptions, (option) => option.value);
+      setProductData({
+        ...productData,
+        [name]: selectedValues,
+      });
+    } else {
+      setProductData({
+        ...productData,
+        [name]: value,
+      });
+    }
   };
+
 
   const handleFileChange = (e) => {
     setProductData({
@@ -98,9 +118,13 @@ const CreateProduct = () => {
     formData.append('description', productData.description);
     formData.append('description_ru', productData.description_ru);
     formData.append('description_en', productData.description_en);
-    formData.append('category_id', productData.category);
-    formData.append('subCategory_id', productData.subcategory);
     formData.append('brand_id', productData.brand);
+    formData.append('category_id', productData.category);
+    
+    productData.subcategory.forEach((subCat) => {
+      formData.append('subcategory_id[]', subCat);
+    });
+  
     if (productData.image) {
       formData.append('product-photo', productData.image);
     }
@@ -115,14 +139,14 @@ const CreateProduct = () => {
       navigate("/Veterinary/admin/products")
       // Optionally, redirect to products page or clear the form
     } catch (error) {
-      if (error.response) {
-        console.error('Server responded with an error:', error.response.data);
-        alert('Error: ' + error.response.data.message);
-      } else {
-        console.error('Error creating product:', error.message);
-        alert('Yalnyslyk doredi: Harydy doredip bilenok');
-      }
-      
+      // if (error.response) {
+      //   console.error('Server responded with an error:', error.response.data);
+      //   alert('Error: ' + error.response.data.message);
+      // } else {
+      //   console.error('Error creating product:', error.message);
+      //   alert('Yalnyslyk doredi: Harydy doredip bilenok');
+      // }
+      console.error('Error creating product:', error.response?.data || error.message);
     }
   };
 
@@ -264,17 +288,23 @@ const CreateProduct = () => {
 
                   {/* For SubCategory */}
                   
-                  <div className='   '>
-                    <label className=' text-center text-lg col-span-6'>Subcategory</label>
-                    <select name="subcategory" value={productData.subcategory} onChange={handleChange} required>
-                        <option value="" disabled>Select a subcategory</option>
-                        {subCats.map((subCat) => (
+                  <div className=''>
+                    <label className='text-center text-lg col-span-6'>Subcategory</label>
+                    <select
+                      name="subcategory"
+                      value={productData.subcategory}
+                      onChange={handleChange}
+                      multiple
+                      required
+                    >
+                      <option value="" disabled>Select subcategories</option>
+                      {subCats.map((subCat) => (
                         <option key={subCat._id} value={subCat._id}>
-                            {subCat.name}
+                          {subCat.name}
                         </option>
-                        ))}
+                      ))}
                     </select>
-                  </div>
+                </div>
 
                  {/* For Image */}
 

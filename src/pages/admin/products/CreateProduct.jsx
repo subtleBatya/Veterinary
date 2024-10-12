@@ -57,6 +57,7 @@ const CreateProduct = () => {
       ...productData,
       image: e.target.files[0],
     });
+
   };
 
   const handleSubmit = async (e) => {
@@ -80,7 +81,8 @@ const CreateProduct = () => {
       navigate("/admin/products")
       // Optionally, redirect to products page or clear the form
     } catch (error) {
-      console.error('Error creating product:', error);
+      console.error('Error creating product:',
+      error.response?.data || error.message);
     }
   };
 
@@ -170,9 +172,9 @@ const CreateProduct = () => {
                     <input
                     className=' col-span-5 border-none blue'
                     type="file"
-                    name="image"
+                    name="product-photo"
                     placeholder="Image"
-                    value={productData.image}
+                   
                     onChange={handleFileChange}
                     required
                   />

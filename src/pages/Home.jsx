@@ -31,7 +31,7 @@ const Home = () => {
    // Filter products by selected category
    const filteredProducts = products.filter(product => {
     if (category === 'all') return true; // Show all products
-    return product.category_id._id === category; // Filter by category_id._id
+    return product.category_id?._id === category; // Filter by category_id._id
   });
 
 
@@ -45,32 +45,7 @@ const Home = () => {
         </div> */}
 
 
-<div>
-      <h1>Products</h1>
 
-      {/* Dropdown for category selection */}
-      <select onChange={(e) => setCategory(e.target.value)}>
-        <option value="all">All Categories</option>
-        {/* Map through unique categories to show in the dropdown */}
-        {Array.from(new Set(products.map(product => product.category_id?.name))).map((categoryName, idx) => (
-          <option key={idx} value={products.find(product => product.category_id?.name === categoryName)?.category_id?._id}>
-            {categoryName}
-          </option>
-        ))}
-      </select>
-
-      {/* Display filtered products */}
-      <div>
-        {filteredProducts.map(product => (
-          <div key={product._id}>
-            <h3>{product.name}</h3>
-            <p>Category: {product.category_id?.name}</p>
-            <p>Price: ${product.price}</p>
-            <img src={product.imageUrl} alt={product.name} />
-          </div>
-        ))}
-      </div>
-</div>
         
             <MainSlider />
             {/* <Categories /> */}

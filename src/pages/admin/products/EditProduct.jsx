@@ -140,7 +140,7 @@ const EditProduct = () => {
         },
       });
       console.log('Product created successfully:', response.data);
-      navigate("/admin/products")
+      navigate("/Veterinary/admin/products")
       // Optionally, redirect to products page or clear the form
     } catch (error) {
       console.error('Error creating product:', error.response?.data || error.message);

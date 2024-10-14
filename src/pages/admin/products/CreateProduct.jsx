@@ -59,19 +59,43 @@ const CreateProduct = () => {
     //     fetchCats();
     //   }, []);
 
-  const [productData, setProductData] = useState({
-    name: '',
-    name_ru: '',
-    name_en: '',
-    price: '',
-    description: '',
-    description_ru: '',
-    description_en: '',
-    brand: '',
-    category: '',
-    subcategory: [], // su tayyk seret
-    image: null,
-  });
+    const [productData, setProductData] = useState({
+      name: '',
+      name_ru: '',
+      name_en: '',
+      price: '',
+      description: '',
+      description_ru: '',
+      description_en: '',
+      brand_id: '',
+      category_id: '',
+      subCategory_id: [], // subcategories as an array
+      image: null,
+    });
+
+    useEffect(() => {
+      const getProduct = async () => {
+        try {
+          const response = await axios.get(`http://212.111.80.94/products`); // HERE WE USE AXIOS
+          console.log(response.data);
+          setProductData({
+          //   id: response.data._id,
+            name: response.data.name || '', // Default to an empty string if undefined
+            price: response.data.price || '',
+            description: response.data.description || '',
+            category: response.data.category_id || '',
+            brand: response.data.brand_id || '',
+            
+          //   description: response.data.description || '',
+            image: null,
+          });
+        } catch (error) {
+          console.error('Error fetching brand details:', error);
+        }
+      };
+  
+      getProduct();
+    }, []);
 
   // const handleChange = (e) => {
   //   setProductData({
@@ -82,22 +106,20 @@ const CreateProduct = () => {
   // };
 
   const handleChange = (e) => {
-    const { name, value, type, selectedOptions } = e.target;
-  
-    if (type === 'select-multiple') {
-      // Handle multiple selections for subcategories
-      const selectedValues = Array.from(selectedOptions, (option) => option.value);
+    if (e.target.name === 'subCategory_id') {
+      const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
       setProductData({
         ...productData,
-        [name]: selectedValues,
+        [e.target.name]: selectedOptions,  // Update subCategory_id as an array
       });
     } else {
       setProductData({
         ...productData,
-        [name]: value,
+        [e.target.name]: e.target.value, // For other fields
       });
     }
   };
+  
 
 
   const handleFileChange = (e) => {
@@ -111,6 +133,7 @@ const CreateProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
+    
     formData.append('name', productData.name);
     formData.append('name_ru', productData.name_ru);
     formData.append('name_en', productData.name_en);
@@ -118,17 +141,16 @@ const CreateProduct = () => {
     formData.append('description', productData.description);
     formData.append('description_ru', productData.description_ru);
     formData.append('description_en', productData.description_en);
-    formData.append('brand_id', productData.brand);
-    formData.append('category_id', productData.category);
+    formData.append('brand_id', productData.brand_id);
+    formData.append('category_id', productData.category_id);
     
-    productData.subcategory.forEach((subCat) => {
-      formData.append('subcategory_id[]', subCat);
-    });
-  
+    // Append the subCategory_id array
+    productData.subCategory_id.forEach(subCat => formData.append('subCategory_id[]', subCat));
+    
     if (productData.image) {
       formData.append('product-photo', productData.image);
     }
-
+  
     try {
       const response = await axios.post(`${API_URL}/secret/product`, formData, {
         headers: {
@@ -136,19 +158,12 @@ const CreateProduct = () => {
         },
       });
       console.log('Product created successfully:', response.data);
-      navigate("/Veterinary/admin/products")
-      // Optionally, redirect to products page or clear the form
+      navigate("/Veterinary/admin/products");
     } catch (error) {
-      // if (error.response) {
-      //   console.error('Server responded with an error:', error.response.data);
-      //   alert('Error: ' + error.response.data.message);
-      // } else {
-      //   console.error('Error creating product:', error.message);
-      //   alert('Yalnyslyk doredi: Harydy doredip bilenok');
-      // }
       console.error('Error creating product:', error.response?.data || error.message);
     }
   };
+  
 
   return (
     <>
@@ -184,7 +199,7 @@ const CreateProduct = () => {
                       placeholder="Product Name"
                       value={productData.name_ru}
                       onChange={handleChange}
-                      required
+                      
                     />
                   </div>
 
@@ -198,21 +213,21 @@ const CreateProduct = () => {
                       placeholder="Product Name"
                       value={productData.name_en}
                       onChange={handleChange}
-                      required
+                      
                     />
                   </div>
 
                   {/* For Brand Input */}
                   <div className='   justify-center  '>
                     <label className=' text-center text-lg me-2'>Brand</label>
-                    <select name="brand" value={productData.brand} onChange={handleChange} required>
-                        <option value="" disabled>Select a brand</option>
-                        {brands.map((brand) => (
-                        <option key={brand._id} value={brand._id}>
-                            {brand.name}
-                        </option>
-                        ))}
-                    </select>
+                    <select name="brand_id" value={productData.brand_id} onChange={handleChange} required>
+                    <option value="" disabled>Select a brand</option>
+                    {brands.map((brand) => (
+                      <option key={brand._id} value={brand._id}>
+                        {brand.name}
+                      </option>
+                    ))}
+                  </select>
                   </div>
                   
                   {/* For Price Input */}
@@ -253,7 +268,7 @@ const CreateProduct = () => {
                     placeholder="Description_ru"
                     value={productData.description_ru}
                     onChange={handleChange}
-                    required
+                    
                   ></textarea>
                   </div>  
 
@@ -268,7 +283,7 @@ const CreateProduct = () => {
                     placeholder="Description_en"
                     value={productData.description_en}
                     onChange={handleChange}
-                    required
+                    
                   ></textarea>
                   </div>   
 
@@ -276,34 +291,29 @@ const CreateProduct = () => {
                   
                   <div className='   '>
                     <label className=' text-center text-lg col-span-6'>Category</label>
-                    <select name="category" value={productData.category} onChange={handleChange} required>
-                        <option value="" disabled>Select a category</option>
-                        {cats.map((cat) => (
+                    <select name="category_id" value={productData.category_id} onChange={handleChange} required>
+                      <option value="" disabled>Select a category</option>
+                      {cats.map((cat) => (
                         <option key={cat._id} value={cat._id}>
-                            {cat.name}
+                          {cat.name}
                         </option>
-                        ))}
-                    </select>
+                      ))}
+                  </select>
+
                   </div>
 
                   {/* For SubCategory */}
                   
                   <div className=''>
                     <label className='text-center text-lg col-span-6'>Subcategory</label>
-                    <select
-                      name="subcategory"
-                      value={productData.subcategory}
-                      onChange={handleChange}
-                      multiple
-                      required
-                    >
-                      <option value="" disabled>Select subcategories</option>
+                    <select name="subCategory_id" value={productData.subCategory_id} onChange={handleChange} multiple required>
                       {subCats.map((subCat) => (
-                        <option key={subCat._id} value={subCat._id}>
+                      <option key={subCat._id} value={subCat._id}>
                           {subCat.name}
-                        </option>
+                      </option>
                       ))}
                     </select>
+
                 </div>
 
                  {/* For Image */}

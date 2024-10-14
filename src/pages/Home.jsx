@@ -79,7 +79,7 @@ const Home = () => {
                     <div className="h3">Su tayda  bir Category goymaly</div>
                     <div className=" text-green-600">Doly gormek</div>
                 </div>
-                <div className="grid grid-cols-4    gap-3">
+                <div className="grid sm:md:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
                         <Product/>
                         <Product/>
                         <Product/>
@@ -91,20 +91,7 @@ const Home = () => {
                     <div className="h3">Su tayda  bir Category goymaly</div>
                     <div className=" text-green-600">Doly gormek</div>
                 </div>
-                <div className="grid grid-cols-4    gap-3">
-                        <FamousPrd/>
-                        <FamousPrd/>
-                        <FamousPrd/>
-                        <FamousPrd/>
-                </div>
-            </div>
-
-            <div className="esas_container mt-5 space-y-4">
-                <div className="flex  mx-auto justify-between items-center">
-                    <div className="h3">Su tayda  bir Category goymaly</div>
-                    <div className=" text-green-600">Doly gormek</div>
-                </div>
-                <div className="grid grid-cols-4    gap-3">
+                <div className="grid sm:md:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
                         <FamousPrd/>
                         <FamousPrd/>
                         <FamousPrd/>
@@ -117,7 +104,20 @@ const Home = () => {
                     <div className="h3">Su tayda  bir Category goymaly</div>
                     <div className=" text-green-600">Doly gormek</div>
                 </div>
-                <div className="grid grid-cols-4    gap-3">
+                <div className="grid sm:md:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                        <FamousPrd/>
+                        <FamousPrd/>
+                        <FamousPrd/>
+                        <FamousPrd/>
+                </div>
+            </div>
+
+            <div className="esas_container mt-5 space-y-4">
+                <div className="flex  mx-auto justify-between items-center">
+                    <div className="h3">Su tayda  bir Category goymaly</div>
+                    <div className=" text-green-600">Doly gormek</div>
+                </div>
+                <div className="grid sm:md:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
                         <FamousPrd/>
                         <FamousPrd/>
                         <FamousPrd/>

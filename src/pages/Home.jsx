@@ -52,8 +52,8 @@ const Home = () => {
       <select onChange={(e) => setCategory(e.target.value)}>
         <option value="all">All Categories</option>
         {/* Map through unique categories to show in the dropdown */}
-        {Array.from(new Set(products.map(product => product.category_id.name))).map((categoryName, idx) => (
-          <option key={idx} value={products.find(product => product.category_id.name === categoryName)?.category_id._id}>
+        {Array.from(new Set(products.map(product => product.category_id?.name))).map((categoryName, idx) => (
+          <option key={idx} value={products.find(product => product.category_id?.name === categoryName)?.category_id?._id}>
             {categoryName}
           </option>
         ))}
@@ -64,7 +64,7 @@ const Home = () => {
         {filteredProducts.map(product => (
           <div key={product._id}>
             <h3>{product.name}</h3>
-            <p>Category: {product.category_id.name}</p>
+            <p>Category: {product.category_id?.name}</p>
             <p>Price: ${product.price}</p>
             <img src={product.imageUrl} alt={product.name} />
           </div>
@@ -141,8 +141,8 @@ const Home = () => {
       <select onChange={(e) => setCategory(e.target.value)}>
         <option value="all">All Categories</option>
         {/* Map through unique categories to show in the dropdown */}
-        {Array.from(new Set(products.map(product => product.category_id.name))).map((categoryName) => {
-            const product = products.find(product => product.category_id.name === categoryName);
+        {Array.from(new Set(products.map(product => product.category_id?.name))).map((categoryName) => {
+            const product = products.find(product => product.category_id?.name === categoryName);
             const category = product ? product.category_id : null; // Ensuring that category exists
             // const category = products.find(product => product.category_id.name === categoryName)?.category_id;
           return (
@@ -161,7 +161,7 @@ const Home = () => {
         {filteredProducts.map(product => (
           <div key={product._id}>
             <h3>{product.name}</h3>
-            <p>Category: {product.category_id.name}</p>
+            <p>Category: {product.category_id?.name}</p>
             <p>Price: ${product.price}</p>
             <img src={product.imageUrl} alt={product.name} />
           </div>

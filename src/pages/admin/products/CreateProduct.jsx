@@ -69,7 +69,7 @@ const CreateProduct = () => {
     description_en: '',
     brand: '',
     category: '',
-    subcategory: [],
+    subcategory: [], // su tayyk seret
     image: null,
   });
 

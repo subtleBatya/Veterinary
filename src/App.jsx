@@ -23,6 +23,7 @@ import EditBrand from './components/EditBrand';
 import CreateCategory from './components/CreateCategory';
 import EditCategory from './components/EditCategory';
 import Home from './pages/Home';
+import ProductShow from './pages/ProductShow'
 
 function App() {
   const Navigate = useNavigate();
@@ -97,6 +98,7 @@ function App() {
     <ProtectedRoute>
       <EditCategory />
     </ProtectedRoute>} />
+    <Route path='Veterinary/show' element={<ProductShow/>}/>
     <Route path="*"  element={<NotFound />} />
    </Routes>
       <Footer />

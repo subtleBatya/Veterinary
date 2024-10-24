@@ -1,7 +1,7 @@
 // CreateBrand.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {API_URL} from '../api/CategoryApi'
+import {API_URL} from '../api/BrandApi'
 
 const CreateCategory = () => {
   const [categoryData, setCategoryData] = useState({

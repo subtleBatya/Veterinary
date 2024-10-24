@@ -3,90 +3,158 @@ import axios from "axios";
 import { API_URL } from "../api/BrandApi";
 
 function ProductDisplay() {
-  const [categories, setCategories] = useState([]);
-  const [productsByCategory, setProductsByCategory] = useState({}); // Store products for each category
+  const [products, setProducts] = useState([]);
 
-  // Fetch all categories
-  const fetchCategories = async () => {
+  // Fetch all products
+  const fetchProducts = async () => {
     try {
-      const response = await axios.get(`${API_URL}/categories`);
-      setCategories(response.data);
+      const response = await axios.get(`${API_URL}/products`);
+      setProducts(response.data);
     } catch (error) {
-      console.error("Error fetching categories:", error);
-    }
-  };
-
-  // Fetch products by category
-  const fetchProductsByCategory = async (categoryId) => {
-    try {
-      const response = await axios.get(`${API_URL}/products`, {
-        params: { category_id: categoryId },
-      });
-      return response.data;
-    } catch (error) {
-      console.error(`Error fetching products for category ${categoryId}:`, error);
-      return [];
+      console.error("Error fetching products:", error);
     }
   };
 
   useEffect(() => {
-    // Fetch all categories on component mount
-    fetchCategories();
+    fetchProducts(); // Fetch all products on component mount
   }, []);
-
-  useEffect(() => {
-    // For each category, fetch the corresponding products
-    const fetchAllProducts = async () => {
-      const productsByCategory = {};
-
-      for (const category of categories) {
-        const products = await fetchProductsByCategory(category._id);
-        productsByCategory[category._id] = products;
-      }
-
-      setProductsByCategory(productsByCategory);
-    };
-
-    if (categories.length) {
-      fetchAllProducts();
-    }
-  }, [categories]);
 
   return (
     <div>
-      {categories.map((category) => (
-        <div key={category._id} className="category-section">
-          <h2>{category.name}</h2> {/* Category name */}
-          <div className="grid sm:md:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-            {productsByCategory[category._id]?.map((product) => (
-              <div key={product._id} className="rounded-none aspect-auto cursor-pointer bg-white h-auto overflow-hidden">
-                <div className="border-b-2">
-                  <div className="image mx-auto w-[220px] p-3 overflow-hidden">
-                    <img
-                      src={product.image || 'path/to/default/image.jpg'}
-                      className="object-cover transition-transform duration-300 transform hover:scale-110 w-full"
-                      alt={product.name}
-                    />
-                  </div>
-                </div>
-                <div className="ps-2 pb-3">
-                  <div className="flex bg-white text-darkColor line-clamp-2 text-lg font-bold pt-3 flex-col">
-                    <div>{product.name}</div>
-                  </div>
-                  <div className="text-goldColor text-sm font-semibold">
-                    {product.price} TM
-                  </div>
+      <h2>All Products</h2>
+      <div className="grid sm:md:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+        {products.length > 0 ? (
+          products.map((product) => (
+            <div
+              key={product._id}
+              className="rounded-none aspect-auto cursor-pointer bg-white h-auto overflow-hidden"
+            >
+              <div className="border-b-2">
+                <div className="image mx-auto w-[220px] p-3 overflow-hidden">
+                {product.image && (
+                                        <div className=' w-[200px] h-[200px]'>
+                                          <img src={`${API_URL}` + `${product.image}`   } alt="" />
+                                        </div>
+                                        )}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      ))}
+              <div className="ps-2 pb-3">
+                <div className="flex bg-white text-darkColor line-clamp-2 text-lg font-bold pt-3 flex-col">
+                  <div>{product.name}</div>
+                </div>
+                <div className="text-goldColor text-sm font-semibold">
+                  {product.price} TM
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>No products available.</p> // Fallback message if no products exist
+        )}
+      </div>
     </div>
   );
 }
 
 export default ProductDisplay;
+
+
+
+// Filtering By Category
+
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import { API_URL } from "../api/BrandApi";
+
+// function ProductDisplay() {
+//   const [categories, setCategories] = useState([]);
+//   const [productsByCategory, setProductsByCategory] = useState({}); // Store products for each category
+//   const [products, setProducts] = useState([])
+//   // Fetch all categories
+//   const fetchCategories = async () => {
+//     try {
+//       const response = await axios.get(`${API_URL}/categories`);
+//       setCategories(response.data);
+//     } catch (error) {
+//       console.error("Error fetching categories:", error);
+//     }
+//   };
+
+//   // Fetch products by category
+//   const fetchProductsByCategory = async (categoryId) => {
+//     try {
+//       const response = await axios.get(`${API_URL}/products`, {
+//         params: { category_id: categoryId },
+//       });
+//       return response.data;
+//     } catch (error) {
+//       console.error(`Error fetching products for category ${categoryId}:`, error);
+//       return [];
+//     }
+//   };
+
+//   useEffect(() => {
+//     // Fetch all categories on component mount
+//     fetchCategories();
+//   }, []);
+
+//   useEffect(() => {
+//     // For each category, fetch the corresponding products
+//     const fetchAllProducts = async () => {
+//       const products = {};
+
+//       for (const category of categories) {
+//         const categoryProducts = await fetchProductsByCategory(category._id);
+//         // productsByCategory[category._id] = products;
+//         products[category._id] = categoryProducts;
+//       }
+
+//       setProductsByCategory(products);
+//     };
+
+//     if (categories.length) {
+//       fetchAllProducts();
+//     }
+//   }, [categories]);
+
+//   return (
+//     <div>
+      
+//         <div key={category._id} className="category-section">
+//           {/* <h2>{category.name}</h2> Category name */}
+//           <div className="grid sm:md:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+//             {products.map((product) => (
+//               <div key={product._id} className="rounded-none aspect-auto cursor-pointer bg-white h-auto overflow-hidden">
+//                 <div className="border-b-2">
+//                   <div className="image mx-auto w-[220px] p-3 overflow-hidden">
+//                     <img
+//                       src={product.image || 'path/to/default/image.jpg'}
+//                       className="object-cover transition-transform duration-300 transform hover:scale-110 w-full"
+//                       alt={product.name}
+//                     />
+//                   </div>
+//                 </div>
+//                 <div className="ps-2 pb-3">
+//                   <div className="flex bg-white text-darkColor line-clamp-2 text-lg font-bold pt-3 flex-col">
+//                     <div>{product.name}</div>
+//                   </div>
+//                   <div className="text-goldColor text-sm font-semibold">
+//                     {product.price} TM
+//                   </div>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+      
+//     </div>
+//   );
+// }
+
+// export default ProductDisplay;
+
+
+// Filtering by Category Ends Here
 
 
 

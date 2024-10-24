@@ -1,29 +1,49 @@
 import React from "react";
 
-const Product = ({ name, price, image }) => {
+const Product = ({ category }) => {
   return (
+    // <div className="rounded-none aspect-auto cursor-pointer bg-white h-auto overflow-hidden">
+    //   <div className="border-b-2">
+    //     <div className="image mx-auto w-[220px] p-3 overflow-hidden">
+    //       <img
+    //         src={image || "path/to/default/image.jpg"} // Use a fallback image if none is provided
+    //         className="object-cover transition-transform duration-300 transform hover:scale-110 w-full"
+    //         alt={name}
+    //       />
+    //     </div>
+    //   </div>
+
+    //   <div className="ps-2 pb-3">
+    //     <div className="flex bg-white text-darkColor line-clamp-2 text-lg font-bold pt-3 flex-col">
+    //       <div>{name}</div>
+    //     </div>
+    //     <div className="text-goldColor text-sm font-semibold">
+    //       {price} TM
+    //     </div>
+    //   </div>
+
+    //   <div className="bg-green-500 rounded-b-lg text-center p-1 text-white">
+    //     Add to Cart
+    //   </div>
+    // </div>
+
+
     <div className="rounded-none aspect-auto cursor-pointer bg-white h-auto overflow-hidden">
       <div className="border-b-2">
         <div className="image mx-auto w-[220px] p-3 overflow-hidden">
           <img
-            src={image || "path/to/default/image.jpg"} // Use a fallback image if none is provided
+            src={category.image || 'path/to/default/image.jpg'}
             className="object-cover transition-transform duration-300 transform hover:scale-110 w-full"
-            alt={name}
+            alt={category.name}
           />
         </div>
       </div>
-
       <div className="ps-2 pb-3">
-        <div className="flex bg-white text-darkColor line-clamp-2 text-lg font-bold pt-3 flex-col">
-          <div>{name}</div>
-        </div>
-        <div className="text-goldColor text-sm font-semibold">
-          {price} TM
-        </div>
+        <div className="text-darkColor font-bold text-lg pt-3">{category.name}</div>
+        <div className="text-goldColor text-sm font-semibold">{category.price} TM</div>
       </div>
-
       <div className="bg-green-500 rounded-b-lg text-center p-1 text-white">
-        Add to Cart
+        Sebede gosun
       </div>
     </div>
   );

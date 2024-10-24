@@ -3,12 +3,12 @@ import React from "react";
 function ProductShow() {
   return(
     <div className="max-w-6xl m-auto gap-3">
-        <div className="grid grid-cols-2 my-4">
-            <div className="text-center">
-                <img className="w-full h-96" src="photo.png" alt="image" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 sm:my-2 md:my-3 lg:my-4">
+            <div className="sm-mx-2 md:mx-0 lg:mx-0 flex justify-center">
+                <img className="w-64 md:w-auto lg:w-full sm:h-64 md:h-72 lg:h-96" src="photo.png" alt="image" />
             </div>
             <div className="ml-10">
-                <h1 className="text-xl font-bold pb-3">Product name</h1>
+                <h1 className="text-xl font-bold pb-3 text-start">Product name</h1>
                 <span className="font-medium">price TMT</span>
                 <p className="py-3">description Lorem ipsum dolor sit amet consectetur adipisicing elit. At optio maiores sit unde veritatis doloribus quas debitis voluptate, quos iusto ipsum voluptatem consectetur quidem officiis perspiciatis cumque nihil ad qui?</p>
                 <div className="flex items-center gap-3">
@@ -29,7 +29,7 @@ function ProductShow() {
                 </div>
             </div>
         </div>
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
             <div>
                 <img className="w-full rounded-md border-2" src="photo.png" alt="" />
                 <p className="mb-3 mt-2 font-semibold h-3">Product name</p>

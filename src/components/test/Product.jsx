@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Product = ({ category }) => {
+const Product = () => {
+
+    const [products, setProducts] = useState([]);
+
+    // Fetch all products
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/products`);
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+  
+    useEffect(() => {
+      fetchProducts(); // Fetch all products on component mount
+    }, []);
   return (
     // <div className="rounded-none aspect-auto cursor-pointer bg-white h-auto overflow-hidden">
     //   <div className="border-b-2">
@@ -31,11 +47,11 @@ const Product = ({ category }) => {
     <div className="rounded-none aspect-auto cursor-pointer bg-white h-auto overflow-hidden">
       <div className="border-b-2">
         <div className="image mx-auto w-[220px] p-3 overflow-hidden">
-          <img
-            src={category.image || 'path/to/default/image.jpg'}
-            className="object-cover transition-transform duration-300 transform hover:scale-110 w-full"
-            alt={category.name}
-          />
+        {product.image && (
+                                        <div className=' w-[200px] h-[200px]'>
+                                          <img src={`${API_URL}` + `${product.image}`   } alt="" />
+                                        </div>
+                                        )}
         </div>
       </div>
       <div className="ps-2 pb-3">

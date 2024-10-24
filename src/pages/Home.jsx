@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../api/BrandApi";
-
+import Product from "../components/test/Product"
 function ProductDisplay() {
   const [products, setProducts] = useState([]);
 
@@ -20,7 +20,7 @@ function ProductDisplay() {
   }, []);
 
   return (
-    <div>
+    <div className=" container-lg">
       <h2>All Products</h2>
       <div className="grid sm:md:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
         {products.length > 0 ? (
@@ -46,13 +46,18 @@ function ProductDisplay() {
                   {product.price} TM
                 </div>
               </div>
+              <div className="bg-green-500 rounded-b-lg text-center p-1 text-white">
+        Sebede gosun
+      </div>
             </div>
           ))
         ) : (
           <p>No products available.</p> // Fallback message if no products exist
         )}
       </div>
+      {/* <Product /> */}
     </div>
+    
   );
 }
 

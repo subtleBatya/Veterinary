@@ -5,7 +5,7 @@ function Footer() {
     <div className=" bg-blue-600 mt-20">
       <div className="container-xl text-white py-10">
         <div className="flex justify-between items-start">
-          <div className="">
+          <div className=" sm:  md:  col-span-1">
             <h1 className="text-xl">Kontaktlar</h1>
             <div className="flex justify-start items-center">
               <svg
@@ -56,7 +56,7 @@ function Footer() {
               </p>
             </div>
           </div>
-          <div>
+          <div className="">
             <h5 className="text-xl pb-2">Quick links</h5>
             <p className="pb-2">
               <a href="#">Home</a>
@@ -68,7 +68,7 @@ function Footer() {
               <a href="#">Contact</a>
             </p>
           </div>
-          <div>
+          <div className="sm: col-span-1">
             <h5 className="text-xl pb-2">Social medialar</h5>
             <div className="flex justify-between items-center gap-4 mt-4">
               <a href="http://">

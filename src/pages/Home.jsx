@@ -12,12 +12,12 @@ const Home = () => {
     
     const [products, setProducts] = useState([]);
     const [category, setCategory] = useState('all'); // default 'all' to show all products
-   
+    const cate1Id = "670a975dcc7d2b56a18f86e0";
 
       // Fetch products
   const fetchProducts = async (category_id) => {
     try {
-      const response = await axios.get(`${API_URL}/products`, {params: { category_id } });
+      const response = await axios.get(`${API_URL}/products`, {params: { category_id: cate1Id },});
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -54,12 +54,24 @@ const Home = () => {
                     <div className="h3">Su tayda  bir Category goymaly</div>
                     <div className=" text-green-600">Doly gormek</div>
                 </div>
-                <div className="grid sm:md:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                {/* <div className="grid sm:md:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
                         <Product/>
                         <Product/>
                         <Product/>
                         <Product/>
-                </div>
+                </div> */}
+
+              <div className="grid sm:md:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                {/* Map through products and render the Product component */}
+                {products.map((product) => (
+                  <Product
+                    key={product._id}
+                    name={product.name}              // Pass product name
+                    price={product.price}            // Pass product price
+                    image={product.image}            // Pass product image
+                  />
+                ))}
+              </div>
             </div>
             <div className="esas_container mt-5 space-y-4">
                 <div className="flex  mx-auto justify-between items-center">

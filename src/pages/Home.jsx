@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../api/BrandApi";
-import Product from "../components/test/Product"
+// import Product from "../components/test/Product"
 function ProductDisplay() {
   const [products, setProducts] = useState([]);
 
